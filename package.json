@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-typescript-graphql",
-  "description": "A Gatsby starter with typesafe GraphQL using TypeScript",
+  "name": "andreafinlay.com",
+  "description": "Personal portfolio site for Andrea Finlay",
   "version": "0.2.0",
   "author": {
-    "name": "Benedikt Franke",
-    "email": "benedikt@franke.tech",
-    "url": "https://franke.tech"
+    "name": "Andrea Finlay",
+    "email": "me@andreafinlay.com",
+    "url": "https://andreafinlay.com"
   },
   "dependencies": {
     "gatsby": "^3.4.0",
@@ -57,7 +57,7 @@
     "develop": "yarn run start",
     "lint": "eslint src/**/*.{js,ts,tsx} *.js",
     "lint:fix": "yarn run lint --fix",
-    "start": "concurrently \"gatsby develop\" \"yarn run codegen\"",
+    "start": "concurrently \"gatsby develop\" \"yarn codegen\"",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "codegen": "graphql-codegen --config graphql-codegen.yml"
@@ -70,6 +70,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/spawnia/gatsby-starter-typescript-graphql"
+    "url": "https://github.com/andreafinlay/andreafinlay"
   }
 }
