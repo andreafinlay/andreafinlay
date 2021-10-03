@@ -24,6 +24,9 @@
     "@typescript-eslint/no-var-requires": 0,
 
     "react/prop-types": 0,
+    "semi": "off",
+    "comma-dangle": "off",
+    "indent": "off",
 
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"]

@@ -1,8 +1,21 @@
 {
-  "endOfLine": "lf",
-  "semi": false,
-  "singleQuote": false,
-  "tabWidth": 2,
-  "trailingComma": "all",
-  "arrowParens": "always"
+  "singleQuote": true,
+    "semi": true,
+    "printWidth": 120,
+    "trailingComma": "all",
+    "arrowParens": "always",
+    "overrides": [
+        {
+            "files": "*.js",
+            "options": {
+                "trailingComma": "es5"
+            }
+        },
+        {
+            "files": "*.{js,ts,jsx,tsx,scss,json,html,mdx}",
+            "options": {
+                "tabWidth": 4
+            }
+        }
+    ]
 }

@@ -1,7 +1,7 @@
-import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
-import { ExampleImageQuery } from '../graphql'
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import Img from 'gatsby-image';
+import { ExampleImageQuery } from '../graphql';
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -15,19 +15,19 @@ import { ExampleImageQuery } from '../graphql'
  */
 
 const Image = () => {
-  const data: ExampleImageQuery = useStaticQuery(graphql`
-    query ExampleImage {
-      placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
-          }
+    const data: ExampleImageQuery = useStaticQuery(graphql`
+        query ExampleImage {
+            placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
+                childImageSharp {
+                    fluid(maxWidth: 300) {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
+            }
         }
-      }
-    }
-  `)
+    `);
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
-}
+    return <Img fluid={data.placeholderImage.childImageSharp.fluid} />;
+};
 
-export default Image
+export default Image;
