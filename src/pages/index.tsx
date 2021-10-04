@@ -1,8 +1,7 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import { Layout, SEO } from '../components';
 
 const IndexPage = () => {
     const data = useStaticQuery(graphql`
@@ -29,7 +28,6 @@ const IndexPage = () => {
             />
             <h1>{title}</h1>
             <MDXRenderer>{body}</MDXRenderer>
-            {/* <Link to="/page-2/">contact</Link> */}
         </Layout>
     );
 };

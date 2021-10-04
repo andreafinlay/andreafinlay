@@ -1,10 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-// import Image from '../components/image';
-
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import { Layout, SEO, Image } from '../components';
 
 const Contact = () => (
     <Layout>
@@ -13,7 +10,7 @@ const Contact = () => (
         <p>
             send me an email at <strong>me@andreafinlay.com</strong>
         </p>
-        {/* <Image /> */}
+        <Image />
         <Link to="/">home</Link>
     </Layout>
 );

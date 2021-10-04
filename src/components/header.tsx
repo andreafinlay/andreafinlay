@@ -34,7 +34,7 @@ const StyledLink = styled(Link)`
     text-decoration: none;
 `;
 
-const Header = ({ siteAuthor }: HeaderProps) => (
+export const Header: React.FC<HeaderProps> = ({ siteAuthor }) => (
     <StyledHeader>
         <ContentWrapper>
             <Title>
@@ -46,5 +46,3 @@ const Header = ({ siteAuthor }: HeaderProps) => (
         </ContentWrapper>
     </StyledHeader>
 );
-
-export default Header;
