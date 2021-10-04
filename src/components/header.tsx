@@ -6,9 +6,11 @@ interface HeaderProps {
     siteTitle: string;
 }
 
-const StyledHeader = styled.header`
-    background: rebeccapurple;
+const StyledHeader = styled('header')`
+    background: rgb(0, 255, 255);
     margin-bottom: 1.45rem;
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
 `;
 
 const Header = ({ siteTitle }: HeaderProps) => (
@@ -24,7 +26,7 @@ const Header = ({ siteTitle }: HeaderProps) => (
                 <Link
                     to="/"
                     style={{
-                        color: 'white',
+                        color: 'black',
                         textDecoration: 'none',
                     }}
                 >

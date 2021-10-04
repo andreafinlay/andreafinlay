@@ -1,20 +1,35 @@
 import React from 'react';
-import { Link } from 'gatsby';
-
+import { graphql, useStaticQuery } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Layout from '../components/layout';
-import Image from '../components/image';
 import SEO from '../components/seo';
 
 const IndexPage = () => {
+    const data = useStaticQuery(graphql`
+        query AboutContentQuery {
+            mdx(fileAbsolutePath: { regex: "/about.mdx/" }) {
+                frontmatter {
+                    title
+                }
+                body
+            }
+        }
+    `);
+
+    const { mdx } = data;
+    const { body } = mdx;
+    const { frontmatter } = mdx;
+    const { title } = frontmatter;
+
     return (
         <Layout>
-            <SEO title="Home" description="This is the personal website of Benedikt Franke" />
-            <h1>Hi people</h1>
-            <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
-                <Image />
-            </div>
-            <h2>Open Source</h2>
-            <Link to="/page-2/">Go to page 2</Link>
+            <SEO
+                title="home"
+                description="personal portfolio site for andrea finlay"
+            />
+            <h1>{title}</h1>
+            <MDXRenderer>{body}</MDXRenderer>
+            {/* <Link to="/page-2/">contact</Link> */}
         </Layout>
     );
 };
