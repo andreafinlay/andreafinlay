@@ -1,10 +1,3 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React, { ReactNode } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
@@ -17,8 +10,12 @@ interface LayoutProps {
 }
 
 const LayoutBody = styled('div')`
-    margin: 0 auto;
-    max-width: 960px;
+    margin: calc(1.45rem + 10px) 3rem;
+    position: absolute;
+    top: calc(1.45rem + 10px);
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
     padding: 0px 1.0875rem 1.45rem;
     font-family: 'Inter';
 `;
@@ -41,7 +38,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             <Header siteAuthor={data.site.siteMetadata.author} />
             <LayoutBody>
                 <main>{children}</main>
-                <footer>© {new Date().getFullYear()}</footer>
+                {/* <footer>© {new Date().getFullYear()}</footer> */}
             </LayoutBody>
         </>
     );

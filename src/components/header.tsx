@@ -16,8 +16,7 @@ const StyledHeader = styled('header')`
 `;
 
 const ContentWrapper = styled('div')`
-    margin: 0 auto;
-    max-width: 960px;
+    margin: 0 3rem;
     padding: 1.45rem 1.0875rem;
     display: flex;
     align-items: center;

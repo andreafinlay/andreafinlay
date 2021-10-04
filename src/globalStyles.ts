@@ -2,14 +2,20 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
 html {
-  font-family: "Inter"; 
+  font-family: "Inter";
+  height: 100%;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
 body {
   margin: 0;
+  height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+main {
+  display: block;
+  height: 100%;
 }
 article,
 aside,
@@ -18,7 +24,6 @@ figcaption,
 figure,
 footer,
 header,
-main,
 menu,
 nav,
 section,
