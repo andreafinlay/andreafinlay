@@ -6,9 +6,9 @@ import { Link } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
-const SecondPage = () => (
+const Contact = () => (
     <Layout>
-        <SEO title="Page two" description="woo" />
+        <SEO title="contact" description="woo" />
         <h1>get in touch</h1>
         <p>
             send me an email at <strong>me@andreafinlay.com</strong>
@@ -18,4 +18,4 @@ const SecondPage = () => (
     </Layout>
 );
 
-export default SecondPage;
+export default Contact;

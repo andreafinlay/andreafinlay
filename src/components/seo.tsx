@@ -78,7 +78,7 @@ const SEO = ({ description, lang = 'en', meta = [], title }: SEOProps) => {
                 lang,
             }}
             title={title}
-            titleTemplate={`%s | ${siteMetadata.title}`}
+            titleTemplate={`%s | ${siteMetadata.author}`}
             meta={constantMeta.concat(meta)}
         />
     );

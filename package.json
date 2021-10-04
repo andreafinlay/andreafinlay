@@ -10,6 +10,7 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
+    "@svgr/cli": "^5.5.0",
     "gatsby": "^3.14.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-image": "^1.14.0",
@@ -65,7 +66,8 @@
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "codegen": "graphql-codegen --config graphql-codegen.yml",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "build:icons": "svgr -d src/assets/icons/generated src/assets/icons/raw"
   },
   "keywords": [
     "gatsby",

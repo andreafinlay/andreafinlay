@@ -1,9 +1,11 @@
-import { Link } from 'gatsby';
 import React from 'react';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 
+import { Send } from '../assets/icons';
+
 interface HeaderProps {
-    siteTitle: string;
+    siteAuthor: string;
 }
 
 const StyledHeader = styled('header')`
@@ -13,27 +15,35 @@ const StyledHeader = styled('header')`
     border-bottom: 5px solid black;
 `;
 
-const Header = ({ siteTitle }: HeaderProps) => (
+const ContentWrapper = styled('div')`
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 1.45rem 1.0875rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+`;
+
+const Title = styled('h1')`
+    margin: 0;
+`;
+
+const StyledLink = styled(Link)`
+    color: black;
+    text-decoration: none;
+`;
+
+const Header = ({ siteAuthor }: HeaderProps) => (
     <StyledHeader>
-        <div
-            style={{
-                margin: '0 auto',
-                maxWidth: 960,
-                padding: '1.45rem 1.0875rem',
-            }}
-        >
-            <h1 style={{ margin: 0 }}>
-                <Link
-                    to="/"
-                    style={{
-                        color: 'black',
-                        textDecoration: 'none',
-                    }}
-                >
-                    {siteTitle}
-                </Link>
-            </h1>
-        </div>
+        <ContentWrapper>
+            <Title>
+                <StyledLink to="/">{siteAuthor}</StyledLink>
+            </Title>
+            <StyledLink to="contact">
+                <Send size={36} />
+            </StyledLink>
+        </ContentWrapper>
     </StyledHeader>
 );
 

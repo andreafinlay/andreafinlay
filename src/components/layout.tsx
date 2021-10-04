@@ -29,6 +29,7 @@ const Layout = ({ children }: LayoutProps) => {
             site {
                 siteMetadata {
                     title
+                    author
                 }
             }
         }
@@ -37,7 +38,7 @@ const Layout = ({ children }: LayoutProps) => {
     return (
         <>
             <GlobalStyles />
-            <Header siteTitle={data.site.siteMetadata.title} />
+            <Header siteAuthor={data.site.siteMetadata.author} />
             <LayoutBody>
                 <main>{children}</main>
                 <footer>© {new Date().getFullYear()}</footer>
