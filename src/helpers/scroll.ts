@@ -51,3 +51,7 @@ export const getNormalizedWheelValues = (event) => {
         pixelY: pY,
     };
 };
+
+export const scrollToElement = (ref: React.RefObject<HTMLDivElement>) => {
+    ref.current.scrollIntoView({ behavior: 'smooth' });
+};
