@@ -1,39 +1,27 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { useStaticQuery, graphql } from 'gatsby';
-import { SiteMetaQuery } from '../graphql';
+
+import { useSiteMetadata } from '../hooks';
 
 type MetaProps = JSX.IntrinsicElements['meta'];
 
 interface SEOProps {
-    description: string;
+    pageDescription: string;
     lang?: string;
     meta?: MetaProps[];
-    title: string;
+    pageTitle: string;
 }
 
 export const SEO: React.FC<SEOProps> = ({
-    description,
+    pageDescription,
     lang = 'en',
     meta = [],
-    title,
+    pageTitle,
 }) => {
-    const { site }: SiteMetaQuery = useStaticQuery(
-        graphql`
-            query SiteMeta {
-                site {
-                    siteMetadata {
-                        title
-                        description
-                        author
-                    }
-                }
-            }
-        `,
-    );
+    const { title, description, author } = useSiteMetadata();
 
-    const siteMetadata = site!.siteMetadata!;
-    const metaDescription = description || siteMetadata.description!;
+    const metaDescription = pageDescription || description!;
+    const metaTitle = pageTitle || title!;
 
     const constantMeta: MetaProps[] = [
         {
@@ -42,7 +30,7 @@ export const SEO: React.FC<SEOProps> = ({
         },
         {
             property: 'og:title',
-            content: title,
+            content: metaTitle,
         },
         {
             property: 'og:description',
@@ -58,11 +46,11 @@ export const SEO: React.FC<SEOProps> = ({
         },
         {
             name: 'twitter:creator',
-            content: siteMetadata.author!,
+            content: author!,
         },
         {
             name: 'twitter:title',
-            content: title,
+            content: metaTitle,
         },
         {
             name: 'twitter:description',
@@ -75,8 +63,7 @@ export const SEO: React.FC<SEOProps> = ({
             htmlAttributes={{
                 lang,
             }}
-            title={title}
-            titleTemplate={`%s | ${siteMetadata.author}`}
+            title={metaTitle}
             meta={constantMeta.concat(meta)}
         />
     );

@@ -1,10 +1,10 @@
 import React, { ReactNode, useState } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import { Header } from './header';
 import { GlobalStyles } from '../globalStyles';
 import { breakpoint } from '../helpers';
+import { useSiteMetadata } from '../hooks';
 
 interface LayoutProps {
     children: ReactNode;
@@ -28,21 +28,10 @@ const LayoutBody = styled('div')`
 `;
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
-    const data = useStaticQuery(graphql`
-        query SiteTitleQuery {
-            site {
-                siteMetadata {
-                    title
-                    author
-                }
-            }
-        }
-    `);
+    const { author } = useSiteMetadata();
     const [slideRefs, setSlideRefs] = useState();
 
     const childrenWithProps = React.Children.map(children, (child) => {
-        // Checking isValidElement is the safe way and avoids a typescript
-        // error too.
         if (React.isValidElement(child)) {
             return React.cloneElement(child, { setSlideRefs });
         }
@@ -53,10 +42,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
         <>
             <GlobalStyles />
-            <Header
-                siteAuthor={data.site.siteMetadata.author}
-                slideRefs={slideRefs}
-            />
+            <Header siteAuthor={author} slideRefs={slideRefs} />
             <LayoutBody>
                 <main>{childrenWithProps}</main>
                 {/* <footer>© {new Date().getFullYear()}</footer> */}
