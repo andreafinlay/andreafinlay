@@ -9,8 +9,8 @@ import styled from 'styled-components';
 
 import { getNormalizedWheelValues, breakpoint } from '../helpers';
 import { ArrowRight } from '../assets/icons';
-import { Slide } from './slide';
 import { useAllMdx } from '../hooks';
+import { Slide } from './slide';
 
 interface ContentProps {
     setSlideRefs?: Dispatch<
