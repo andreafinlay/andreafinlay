@@ -64,6 +64,7 @@ export const SEO: React.FC<SEOProps> = ({
                 lang,
             }}
             title={metaTitle}
+            titleTemplate={`%s | ${author}`}
             meta={constantMeta.concat(meta)}
         />
     );
