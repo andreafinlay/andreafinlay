@@ -3,22 +3,17 @@ import { createGlobalStyle } from 'styled-components';
 export const GlobalStyles = createGlobalStyle`
 html {
   font-family: "Inter";
-  height: 100%;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
 }
 body {
   margin: 0;
-  height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scroll-behavior: smooth;
 }
 main {
-  display: block;
   height: 100%;
-  scroll-behavior: smooth;
+  display: block;
 }
 article,
 aside,
@@ -117,12 +112,23 @@ hr {
   overflow: visible;
 }
 button,
-input,
 optgroup,
-select,
+select {
+  font: inherit;
+  margin: 0;
+  border: 2px solid black;
+}
+input,
 textarea {
   font: inherit;
   margin: 0;
+  border: 2px solid black;
+  resize: none;
+}
+input:focus,
+textarea:focus {
+  outline: none;
+  border: 2px solid #87afff;
 }
 optgroup {
   font-weight: 700;

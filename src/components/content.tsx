@@ -10,6 +10,7 @@ import styled from 'styled-components';
 
 import { getNormalizedWheelValues, breakpoint } from '../helpers';
 import { Slide } from './slide';
+import { ArrowRight } from '../assets/icons';
 
 interface ContentProps {
     setSlideRefs?: Dispatch<
@@ -19,8 +20,41 @@ interface ContentProps {
 
 const Wrapper = styled('div')`
     height: 100%;
-    width: 100%;
-    margin-top: 1.45rem;
+    margin-top: 3.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+`;
+
+const ArrowWrapper = styled('div')`
+    -moz-animation: bounce 3s infinite;
+    -webkit-animation: bounce 3s infinite;
+    animation: bounce 3s infinite;
+
+    @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+            transform: translateX(0);
+        }
+        40% {
+            transform: translateX(30px);
+        }
+        60% {
+            transform: translateX(15px);
+        }
+    }
+
+    ${breakpoint('md')`
+        display: none;
+    `};
+`;
+
+const ScrollWrapper = styled('div')`
+    height: 100%;
+    margin-top: -3rem;
     display: flex;
     align-items: center;
     overflow-x: scroll;
@@ -74,21 +108,25 @@ export const Content: React.FC<ContentProps> = ({ setSlideRefs }) => {
     }, []);
 
     return (
-        <Wrapper ref={contentRef} onWheel={scrollHorizontally}>
-            {edges.map((edge) => {
-                const slideRef = useRef<HTMLDivElement>();
-                slideRefs.push(slideRef);
-
-                return (
-                    <Slide
-                        title={edge.node.frontmatter.title}
-                        body={edge.node.body}
-                        key={edge.node.id}
-                        id={edge.node.frontmatter.title}
-                        ref={slideRef}
-                    />
-                );
-            })}
+        <Wrapper>
+            <ArrowWrapper>
+                <ArrowRight size={36} />
+            </ArrowWrapper>
+            <ScrollWrapper ref={contentRef} onWheel={scrollHorizontally}>
+                {edges.map((edge) => {
+                    const slideRef = useRef<HTMLDivElement>();
+                    slideRefs.push(slideRef);
+                    return (
+                        <Slide
+                            title={edge.node.frontmatter.title}
+                            body={edge.node.body}
+                            key={edge.node.id}
+                            id={edge.node.frontmatter.title}
+                            ref={slideRef}
+                        />
+                    );
+                })}
+            </ScrollWrapper>
         </Wrapper>
     );
 };
