@@ -5,12 +5,12 @@ import React, {
     useEffect,
     useRef,
 } from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 
 import { getNormalizedWheelValues, breakpoint } from '../helpers';
-import { Slide } from './slide';
 import { ArrowRight } from '../assets/icons';
+import { Slide } from './slide';
+import { useAllMdx } from '../hooks';
 
 interface ContentProps {
     setSlideRefs?: Dispatch<
@@ -65,25 +65,7 @@ const ScrollWrapper = styled('div')`
 `;
 
 export const Content: React.FC<ContentProps> = ({ setSlideRefs }) => {
-    const data = useStaticQuery(graphql`
-        query AboutContentQuery {
-            allMdx(sort: { order: ASC, fields: frontmatter___id }) {
-                edges {
-                    node {
-                        body
-                        id
-                        frontmatter {
-                            title
-                            id
-                        }
-                    }
-                }
-            }
-        }
-    `);
-
-    const { allMdx } = data;
-    const { edges } = allMdx;
+    const edges = useAllMdx();
 
     const contentRef = useRef<HTMLDivElement>();
     const slideRefs: Array<MutableRefObject<HTMLDivElement> | undefined> = [];
