@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import styled from 'styled-components';
 
 import { Github, Send } from '../assets/icons';
@@ -6,11 +6,11 @@ import { scrollToElement } from '../helpers';
 
 interface HeaderProps {
     siteAuthor: string;
-    slideRefs: React.RefObject<HTMLDivElement>[];
+    slideRefs: RefObject<HTMLDivElement>[];
 }
 
 const StyledHeader = styled('header')`
-    background: rgb(0, 255, 255);
+    background: #87afff;
     margin-bottom: 1.45rem;
     border-top: 5px solid black;
     border-bottom: 5px solid black;
