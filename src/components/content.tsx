@@ -1,9 +1,21 @@
-import React, { useRef } from 'react';
+import React, {
+    Dispatch,
+    MutableRefObject,
+    SetStateAction,
+    useEffect,
+    useRef,
+} from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 
-import { getNormalizedWheelValues } from '../helpers';
+import { getNormalizedWheelValues, breakpoint } from '../helpers';
 import { Slide } from './slide';
+
+interface ContentProps {
+    setSlideRefs?: Dispatch<
+        SetStateAction<MutableRefObject<HTMLDivElement>[] | undefined>
+    >;
+}
 
 const Wrapper = styled('div')`
     height: 100%;
@@ -12,9 +24,13 @@ const Wrapper = styled('div')`
     display: flex;
     align-items: center;
     overflow-x: scroll;
+
+    ${breakpoint('md')`
+        flex-direction: column;
+    `};
 `;
 
-export const Content: React.FC = () => {
+export const Content: React.FC<ContentProps> = ({ setSlideRefs }) => {
     const data = useStaticQuery(graphql`
         query AboutContentQuery {
             allMdx(sort: { order: ASC, fields: frontmatter___id }) {
@@ -36,6 +52,7 @@ export const Content: React.FC = () => {
     const { edges } = allMdx;
 
     const contentRef = useRef<HTMLDivElement>();
+    const slideRefs: Array<MutableRefObject<HTMLDivElement> | undefined> = [];
 
     const scrollHorizontally = (event) => {
         event.preventDefault();
@@ -52,15 +69,26 @@ export const Content: React.FC = () => {
         }
     };
 
+    useEffect(() => {
+        setSlideRefs(slideRefs);
+    }, []);
+
     return (
         <Wrapper ref={contentRef} onWheel={scrollHorizontally}>
-            {edges.map((edge) => (
-                <Slide
-                    title={edge.node.frontmatter.title}
-                    body={edge.node.body}
-                    key={edge.node.id}
-                />
-            ))}
+            {edges.map((edge) => {
+                const slideRef = useRef<HTMLDivElement>();
+                slideRefs.push(slideRef);
+
+                return (
+                    <Slide
+                        title={edge.node.frontmatter.title}
+                        body={edge.node.body}
+                        key={edge.node.id}
+                        id={edge.node.frontmatter.title}
+                        ref={slideRef}
+                    />
+                );
+            })}
         </Wrapper>
     );
 };

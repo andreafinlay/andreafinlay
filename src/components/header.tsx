@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import styled from 'styled-components';
 
-import { Send } from '../assets/icons';
+import { Github, Send } from '../assets/icons';
+import { scrollToElement } from '../helpers';
 
 interface HeaderProps {
     siteAuthor: string;
+    slideRefs: React.RefObject<HTMLDivElement>[];
 }
 
 const StyledHeader = styled('header')`
@@ -16,7 +17,7 @@ const StyledHeader = styled('header')`
 `;
 
 const ContentWrapper = styled('div')`
-    margin: 0 3rem;
+    margin: 0 1rem;
     padding: 1.45rem 1.0875rem;
     display: flex;
     align-items: center;
@@ -28,20 +29,56 @@ const Title = styled('h1')`
     margin: 0;
 `;
 
-const StyledLink = styled(Link)`
+const StyledButton = styled('button')`
     color: black;
-    text-decoration: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
 `;
 
-export const Header: React.FC<HeaderProps> = ({ siteAuthor }) => (
-    <StyledHeader>
-        <ContentWrapper>
-            <Title>
-                <StyledLink to="/">{siteAuthor}</StyledLink>
-            </Title>
-            <StyledLink to="contact">
-                <Send size={36} />
-            </StyledLink>
-        </ContentWrapper>
-    </StyledHeader>
-);
+const LinksContainer = styled('div')`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & > * {
+        margin-left: 8px;
+    }
+`;
+
+export const Header: React.FC<HeaderProps> = ({ siteAuthor, slideRefs }) => {
+    const handleContactScroll = () => {
+        scrollToElement(slideRefs[2]);
+    };
+
+    const handleAboutScroll = () => {
+        scrollToElement(slideRefs[0]);
+    };
+
+    return (
+        <StyledHeader>
+            <ContentWrapper>
+                <Title>
+                    <StyledButton onClick={handleAboutScroll}>
+                        {siteAuthor}
+                    </StyledButton>
+                </Title>
+                <LinksContainer>
+                    <StyledButton
+                        as="a"
+                        href="https://github.com/andreafinlay"
+                        target="blank"
+                    >
+                        <Github size={36} />
+                    </StyledButton>
+                    <StyledButton onClick={handleContactScroll}>
+                        <Send size={36} />
+                    </StyledButton>
+                </LinksContainer>
+            </ContentWrapper>
+        </StyledHeader>
+    );
+};
