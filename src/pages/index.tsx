@@ -1,6 +1,4 @@
 import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { Content, Layout, SEO } from '../components';
 
 const IndexPage = () => {
