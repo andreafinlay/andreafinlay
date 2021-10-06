@@ -1,19 +1,13 @@
 import React, { ReactNode, useState } from 'react';
-import styled from 'styled-components';
 
-import { Header } from '../header/header';
 import { GlobalStyles } from '../../globalStyles';
 import { useSiteMetadata } from '../../hooks';
+import { Header } from '../header';
+import { Styled } from './layout.styled';
 
 interface LayoutProps {
     children: ReactNode;
 }
-
-const LayoutBody = styled('div')`
-    box-sizing: border-box;
-    padding-top: 96px;
-    font-family: 'Inter';
-`;
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
     const { author } = useSiteMetadata();
@@ -31,9 +25,9 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
         <>
             <GlobalStyles />
             <Header siteAuthor={author} slideRefs={slideRefs} />
-            <LayoutBody>
+            <Styled.LayoutBody>
                 <main>{childrenWithProps}</main>
-            </LayoutBody>
+            </Styled.LayoutBody>
         </>
     );
 };

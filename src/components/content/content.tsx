@@ -6,76 +6,18 @@ import React, {
     useRef,
     useState,
 } from 'react';
-import styled from 'styled-components';
 
-import { breakpoint, scrollHorizontally } from '../../helpers';
-import { ArrowRight } from '../../assets/icons';
 import { useAllMdx } from '../../hooks';
-import { Slide } from '../slide/slide';
+import { scrollHorizontally } from '../../helpers';
+import { ArrowRight } from '../../assets/icons';
+import { Slide } from '../slide';
+import { Styled } from './content.styled';
 
 interface ContentProps {
     setSlideRefs?: Dispatch<
         SetStateAction<MutableRefObject<HTMLDivElement>[] | undefined>
     >;
 }
-
-const Wrapper = styled('div')`
-    position: absolute;
-    bottom: 0;
-    top: 96px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-`;
-
-const ArrowWrapper = styled('div')<{ shouldShowArrow }>`
-    position: absolute;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    margin-left: 4rem;
-
-    -moz-animation: bounce 3s infinite;
-    -webkit-animation: bounce 3s infinite;
-    animation: bounce 3s infinite;
-
-    @keyframes bounce {
-        0%,
-        20%,
-        50%,
-        80%,
-        100% {
-            transform: translateX(0);
-        }
-        40% {
-            transform: translateX(30px);
-        }
-        60% {
-            transform: translateX(15px);
-        }
-    }
-
-    opacity: ${({ shouldShowArrow }) => (shouldShowArrow ? 1 : 0)};
-
-    ${breakpoint('md')`
-        opacity: 0;
-    `};
-
-    transition: opacity 300ms ease-in-out;
-`;
-
-const ScrollWrapper = styled('div')`
-    height: 100%;
-    margin: 0 2rem;
-    display: flex;
-    align-items: center;
-    overflow-x: scroll;
-
-    ${breakpoint('md')`
-        flex-direction: column;
-        margin: 0;
-    `};
-`;
 
 export const Content: React.FC<ContentProps> = ({ setSlideRefs }) => {
     const edges = useAllMdx();
@@ -99,11 +41,14 @@ export const Content: React.FC<ContentProps> = ({ setSlideRefs }) => {
     }, []);
 
     return (
-        <Wrapper>
-            <ArrowWrapper shouldShowArrow={shouldShowArrow}>
+        <Styled.Wrapper>
+            <Styled.ArrowWrapper shouldShowArrow={shouldShowArrow}>
                 <ArrowRight size={36} />
-            </ArrowWrapper>
-            <ScrollWrapper ref={contentRef} onWheel={handleHorizontalScroll}>
+            </Styled.ArrowWrapper>
+            <Styled.ScrollWrapper
+                ref={contentRef}
+                onWheel={handleHorizontalScroll}
+            >
                 {edges.map((edge) => {
                     const slideRef = useRef<HTMLDivElement>();
                     slideRefs.push(slideRef);
@@ -117,7 +62,7 @@ export const Content: React.FC<ContentProps> = ({ setSlideRefs }) => {
                         />
                     );
                 })}
-            </ScrollWrapper>
-        </Wrapper>
+            </Styled.ScrollWrapper>
+        </Styled.Wrapper>
     );
 };
