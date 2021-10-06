@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import { useSiteMetadata } from '../hooks';
+import { useSiteMetadata } from '../../hooks';
 
 type MetaProps = JSX.IntrinsicElements['meta'];
 

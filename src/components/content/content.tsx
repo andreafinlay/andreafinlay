@@ -8,10 +8,10 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 
-import { breakpoint, scrollHorizontally } from '../helpers';
-import { ArrowRight } from '../assets/icons';
-import { useAllMdx } from '../hooks';
-import { Slide } from './slide';
+import { breakpoint, scrollHorizontally } from '../../helpers';
+import { ArrowRight } from '../../assets/icons';
+import { useAllMdx } from '../../hooks';
+import { Slide } from '../slide/slide';
 
 interface ContentProps {
     setSlideRefs?: Dispatch<

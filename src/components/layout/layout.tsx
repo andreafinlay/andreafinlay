@@ -1,9 +1,9 @@
 import React, { ReactNode, useState } from 'react';
 import styled from 'styled-components';
 
-import { Header } from './header';
-import { GlobalStyles } from '../globalStyles';
-import { useSiteMetadata } from '../hooks';
+import { Header } from '../header/header';
+import { GlobalStyles } from '../../globalStyles';
+import { useSiteMetadata } from '../../hooks';
 
 interface LayoutProps {
     children: ReactNode;

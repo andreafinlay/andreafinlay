@@ -2,8 +2,8 @@ import { Link } from 'gatsby';
 import React, { RefObject } from 'react';
 import styled from 'styled-components';
 
-import { Github, Send } from '../assets/icons';
-import { scrollToElement } from '../helpers';
+import { Github, Send } from '../../assets/icons';
+import { scrollToElement } from '../../helpers';
 
 interface HeaderProps {
     siteAuthor: string;

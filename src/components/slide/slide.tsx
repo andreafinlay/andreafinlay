@@ -2,7 +2,7 @@ import React, { forwardRef, Ref } from 'react';
 import styled from 'styled-components';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
-import { breakpoint } from '../helpers';
+import { breakpoint } from '../../helpers';
 
 interface SlideProps {
     title: string;
