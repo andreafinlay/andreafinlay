@@ -5,8 +5,8 @@ const IndexPage = () => {
     return (
         <Layout>
             <SEO
-                title="home"
-                description="personal portfolio site for andrea finlay"
+                pageTitle="home"
+                pageDescription="personal portfolio site for andrea finlay"
             />
             <Content />
         </Layout>

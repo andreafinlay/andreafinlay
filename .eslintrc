@@ -27,6 +27,7 @@
     "semi": "off",
     "comma-dangle": "off",
     "indent": "off",
+    "multiline-ternary": "off",
 
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"]

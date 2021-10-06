@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import React, { RefObject } from 'react';
 import styled from 'styled-components';
 
@@ -11,14 +12,14 @@ interface HeaderProps {
 
 const StyledHeader = styled('header')`
     background: #87afff;
-    margin-bottom: 1.45rem;
     border-top: 5px solid black;
     border-bottom: 5px solid black;
+    position: relative;
 `;
 
 const ContentWrapper = styled('div')`
-    margin: 0 1rem;
-    padding: 1.45rem 1.0875rem;
+    margin: 0 2rem;
+    height: 86px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -37,6 +38,12 @@ const StyledButton = styled('button')`
     justify-content: center;
     border: none;
     cursor: pointer;
+    padding: 0;
+`;
+
+const StyledLink = styled(Link)`
+    color: black;
+    text-decoration: none;
 `;
 
 const LinksContainer = styled('div')`
@@ -62,9 +69,13 @@ export const Header: React.FC<HeaderProps> = ({ siteAuthor, slideRefs }) => {
         <StyledHeader>
             <ContentWrapper>
                 <Title>
-                    <StyledButton onClick={handleAboutScroll}>
-                        {siteAuthor}
-                    </StyledButton>
+                    {slideRefs && slideRefs.length ? (
+                        <StyledButton onClick={handleAboutScroll}>
+                            {siteAuthor}
+                        </StyledButton>
+                    ) : (
+                        <StyledLink to="/">{siteAuthor}</StyledLink>
+                    )}
                 </Title>
                 <LinksContainer>
                     <StyledButton
