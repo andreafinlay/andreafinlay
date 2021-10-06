@@ -1,7 +1,7 @@
 /* eslint-disable quotes */
-import React, { useState } from 'react';
+import React from 'react';
 
-import { useSlidesContext } from '../../contexts';
+import { useMenuContext, useSlidesContext } from '../../contexts';
 import { scrollToElement } from '../../helpers';
 import { Github, Linkedin, Send } from '../../assets/icons';
 import { Styled } from './header.styled';
@@ -13,7 +13,7 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ siteAuthor }) => {
     const { slideRefs, setShouldShowArrow } = useSlidesContext();
     const shouldNavigate = slideRefs && slideRefs.length;
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { isMenuOpen, openMenu, closeMenu } = useMenuContext();
 
     const handleContactScroll = () => {
         setShouldShowArrow(false);
@@ -26,7 +26,11 @@ export const Header: React.FC<HeaderProps> = ({ siteAuthor }) => {
     };
 
     const handleOpenMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
+        if (!isMenuOpen) {
+            openMenu();
+        } else {
+            closeMenu();
+        }
     };
 
     return (
