@@ -1,6 +1,7 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode } from 'react';
 
 import { GlobalStyles } from '../../globalStyles';
+import { useSlidesContext } from '../../contexts';
 import { useSiteMetadata } from '../../hooks';
 import { Header } from '../header';
 import { Styled } from './layout.styled';
@@ -11,22 +12,14 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
     const { author } = useSiteMetadata();
-    const [slideRefs, setSlideRefs] = useState();
-
-    const childrenWithProps = React.Children.map(children, (child) => {
-        if (React.isValidElement(child)) {
-            return React.cloneElement(child, { setSlideRefs });
-        }
-
-        return child;
-    });
+    const { slideRefs } = useSlidesContext();
 
     return (
         <>
             <GlobalStyles />
             <Header siteAuthor={author} slideRefs={slideRefs} />
             <Styled.LayoutBody>
-                <main>{childrenWithProps}</main>
+                <main>{children}</main>
             </Styled.LayoutBody>
         </>
     );

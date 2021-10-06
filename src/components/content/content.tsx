@@ -1,26 +1,15 @@
-import React, {
-    Dispatch,
-    MutableRefObject,
-    SetStateAction,
-    useEffect,
-    useRef,
-    useState,
-} from 'react';
+import React, { MutableRefObject, useRef, useState } from 'react';
 
-import { useAllMdx } from '../../hooks';
+import { useSlidesContext } from '../../contexts';
+import { useAllMdx, useMountEffect } from '../../hooks';
 import { scrollHorizontally } from '../../helpers';
 import { ArrowRight } from '../../assets/icons';
 import { Slide } from '../slide';
 import { Styled } from './content.styled';
 
-interface ContentProps {
-    setSlideRefs?: Dispatch<
-        SetStateAction<MutableRefObject<HTMLDivElement>[] | undefined>
-    >;
-}
-
-export const Content: React.FC<ContentProps> = ({ setSlideRefs }) => {
+export const Content: React.FC = () => {
     const edges = useAllMdx();
+    const { setSlideRefs } = useSlidesContext();
     const [shouldShowArrow, setShouldShowArrow] = useState(true);
 
     const contentRef = useRef<HTMLDivElement>();
@@ -36,9 +25,7 @@ export const Content: React.FC<ContentProps> = ({ setSlideRefs }) => {
         }
     };
 
-    useEffect(() => {
-        setSlideRefs(slideRefs);
-    }, []);
+    useMountEffect(() => setSlideRefs(slideRefs));
 
     return (
         <Styled.Wrapper>
@@ -52,6 +39,7 @@ export const Content: React.FC<ContentProps> = ({ setSlideRefs }) => {
                 {edges.map((edge) => {
                     const slideRef = useRef<HTMLDivElement>();
                     slideRefs.push(slideRef);
+
                     return (
                         <Slide
                             title={edge.node.frontmatter.title}
