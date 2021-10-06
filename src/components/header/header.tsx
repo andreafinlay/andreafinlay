@@ -11,6 +11,7 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ siteAuthor }) => {
     const { slideRefs, setShouldShowArrow } = useSlidesContext();
+    const shouldNavigate = slideRefs && slideRefs.length;
 
     const handleContactScroll = () => {
         setShouldShowArrow(false);
@@ -26,7 +27,7 @@ export const Header: React.FC<HeaderProps> = ({ siteAuthor }) => {
         <Styled.StyledHeader>
             <Styled.ContentWrapper>
                 <Styled.Title>
-                    {slideRefs && slideRefs.length ? (
+                    {shouldNavigate ? (
                         <Styled.StyledButton onClick={handleAboutScroll}>
                             {siteAuthor}
                         </Styled.StyledButton>
@@ -44,9 +45,11 @@ export const Header: React.FC<HeaderProps> = ({ siteAuthor }) => {
                     >
                         <Github size={36} />
                     </Styled.StyledButton>
-                    <Styled.StyledButton onClick={handleContactScroll}>
-                        <Send size={36} />
-                    </Styled.StyledButton>
+                    {!!shouldNavigate && (
+                        <Styled.StyledButton onClick={handleContactScroll}>
+                            <Send size={36} />
+                        </Styled.StyledButton>
+                    )}
                 </Styled.LinksContainer>
             </Styled.ContentWrapper>
         </Styled.StyledHeader>

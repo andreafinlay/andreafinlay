@@ -18,7 +18,6 @@ const ArrowWrapper = styled('button')<{ shouldShowArrow }>`
     margin-top: 6rem;
     background-color: #87afff;
     cursor: pointer;
-    border: 3px solid black;
 
     -moz-animation: bounce 3s infinite;
     -webkit-animation: bounce 3s infinite;

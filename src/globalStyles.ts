@@ -115,19 +115,20 @@ optgroup,
 select {
   font: inherit;
   margin: 0;
-  border: 2px solid black;
+  border: 3px solid black;
 }
 input,
 textarea {
   font: inherit;
   margin: 0;
-  border: 2px solid black;
+  border: 3px solid black;
+  padding: 5px;
   resize: none;
 }
 input:focus,
 textarea:focus {
   outline: none;
-  border: 2px solid #87afff;
+  border: 3px solid #87afff;
 }
 optgroup {
   font-weight: 700;
