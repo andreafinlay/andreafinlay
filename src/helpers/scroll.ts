@@ -52,6 +52,29 @@ export const getNormalizedWheelValues = (event) => {
     };
 };
 
+export const scrollHorizontally = (
+    event: WheelEvent,
+    ref: React.RefObject<HTMLDivElement>,
+): { scrollPosition: number } => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    let scrollPosition;
+
+    const wheelValues = getNormalizedWheelValues(event);
+    const x =
+        wheelValues.pixelX !== 0 ? wheelValues.pixelX : wheelValues.pixelY;
+    const delta = Math.min(Math.abs(x), 150);
+    const direction = x > 0 ? 1 : -1;
+
+    if (ref && ref.current) {
+        ref.current.scrollLeft += delta * direction;
+        scrollPosition = ref.current.scrollLeft;
+    }
+
+    return { scrollPosition };
+};
+
 export const scrollToElement = (ref: React.RefObject<HTMLDivElement>) => {
     ref.current.scrollIntoView({ behavior: 'smooth' });
 };

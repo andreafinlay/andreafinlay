@@ -12,14 +12,14 @@ interface HeaderProps {
 
 const StyledHeader = styled('header')`
     background: #87afff;
-    margin-bottom: 1.45rem;
     border-top: 5px solid black;
     border-bottom: 5px solid black;
+    position: relative;
 `;
 
 const ContentWrapper = styled('div')`
-    margin: 0 1rem;
-    padding: 1.45rem 1.0875rem;
+    margin: 0 2rem;
+    height: 86px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -38,16 +38,12 @@ const StyledButton = styled('button')`
     justify-content: center;
     border: none;
     cursor: pointer;
+    padding: 0;
 `;
 
 const StyledLink = styled(Link)`
     color: black;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    cursor: pointer;
+    text-decoration: none;
 `;
 
 const LinksContainer = styled('div')`

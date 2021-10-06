@@ -2,7 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
 html {
-  font-family: "Inter";
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
