@@ -43,6 +43,7 @@ const ArrowWrapper = styled('button')<{ shouldShowArrow }>`
 
     ${breakpoint('md')`
         opacity: 0;
+        display: none;
     `};
 
     transition: opacity 300ms ease-in-out;
