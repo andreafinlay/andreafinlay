@@ -76,5 +76,14 @@ export const scrollHorizontally = (
 };
 
 export const scrollToElement = (ref: React.RefObject<HTMLDivElement>) => {
-    ref.current.scrollIntoView({ behavior: 'smooth' });
+    ref.current.scrollIntoView({ behavior: 'smooth', inline: 'start' });
+};
+
+export const getOffset = (ref: React.RefObject<HTMLDivElement>) => {
+    const rect = ref?.current?.getBoundingClientRect();
+    const scrollLeft =
+        window.pageXOffset || document.documentElement.scrollLeft;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    return { top: rect?.top + scrollTop, left: rect?.left + scrollLeft };
 };

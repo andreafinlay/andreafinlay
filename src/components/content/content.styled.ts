@@ -10,12 +10,15 @@ const Wrapper = styled('div')`
     align-items: flex-start;
 `;
 
-const ArrowWrapper = styled('div')<{ shouldShowArrow }>`
+const ArrowWrapper = styled('button')<{ shouldShowArrow }>`
     position: absolute;
-    height: 100%;
     display: flex;
     align-items: center;
     margin-left: 4rem;
+    margin-top: 6rem;
+    background-color: #87afff;
+    cursor: pointer;
+    border: 3px solid black;
 
     -moz-animation: bounce 3s infinite;
     -webkit-animation: bounce 3s infinite;

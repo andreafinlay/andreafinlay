@@ -15,20 +15,32 @@ export interface SlidesContextProps {
     setSlideRefs: Dispatch<
         SetStateAction<MutableRefObject<HTMLDivElement>[] | undefined>
     >;
+    shouldShowArrow: boolean;
+    setShouldShowArrow: Dispatch<SetStateAction<boolean>>;
 }
 
 const defaultState = {
     slideRefs: [],
     setSlideRefs: () => null,
+    shouldShowArrow: true,
+    setShouldShowArrow: () => true,
 };
 
 export const SlidesContext = createContext<SlidesContextProps>(defaultState);
 
 export const SlidesContextProvider: FC = ({ children }): ReactElement => {
     const [slideRefs, setSlideRefs] = useState<RefObject<HTMLDivElement>[]>();
+    const [shouldShowArrow, setShouldShowArrow] = useState(true);
 
     return (
-        <SlidesContext.Provider value={{ slideRefs, setSlideRefs }}>
+        <SlidesContext.Provider
+            value={{
+                slideRefs,
+                setSlideRefs,
+                shouldShowArrow,
+                setShouldShowArrow,
+            }}
+        >
             {children}
         </SlidesContext.Provider>
     );

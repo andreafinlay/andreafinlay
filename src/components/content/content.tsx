@@ -1,19 +1,20 @@
-import React, { MutableRefObject, useRef, useState } from 'react';
+import React, { MutableRefObject, useRef } from 'react';
 
 import { useSlidesContext } from '../../contexts';
 import { useAllMdx, useMountEffect } from '../../hooks';
-import { scrollHorizontally } from '../../helpers';
+import { scrollHorizontally, scrollToElement } from '../../helpers';
 import { ArrowRight } from '../../assets/icons';
 import { Slide } from '../slide';
 import { Styled } from './content.styled';
 
 export const Content: React.FC = () => {
     const edges = useAllMdx();
-    const { setSlideRefs } = useSlidesContext();
-    const [shouldShowArrow, setShouldShowArrow] = useState(true);
+    const { slideRefs, setSlideRefs, shouldShowArrow, setShouldShowArrow } =
+        useSlidesContext();
 
     const contentRef = useRef<HTMLDivElement>();
-    const slideRefs: Array<MutableRefObject<HTMLDivElement> | undefined> = [];
+    const slideRefsArr: Array<MutableRefObject<HTMLDivElement> | undefined> =
+        [];
 
     const handleHorizontalScroll = (event) => {
         const { scrollPosition } = scrollHorizontally(event, contentRef);
@@ -25,11 +26,19 @@ export const Content: React.FC = () => {
         }
     };
 
-    useMountEffect(() => setSlideRefs(slideRefs));
+    const handleScrollToNextSlide = () => {
+        setShouldShowArrow(false);
+        scrollToElement(slideRefs[1]);
+    };
+
+    useMountEffect(() => setSlideRefs(slideRefsArr));
 
     return (
         <Styled.Wrapper>
-            <Styled.ArrowWrapper shouldShowArrow={shouldShowArrow}>
+            <Styled.ArrowWrapper
+                shouldShowArrow={shouldShowArrow}
+                onClick={handleScrollToNextSlide}
+            >
                 <ArrowRight size={36} />
             </Styled.ArrowWrapper>
             <Styled.ScrollWrapper
@@ -38,7 +47,7 @@ export const Content: React.FC = () => {
             >
                 {edges.map((edge) => {
                     const slideRef = useRef<HTMLDivElement>();
-                    slideRefs.push(slideRef);
+                    slideRefsArr.push(slideRef);
 
                     return (
                         <Slide

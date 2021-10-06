@@ -1,20 +1,24 @@
-import React, { RefObject } from 'react';
+import React from 'react';
 
-import { Github, Send } from '../../assets/icons';
+import { useSlidesContext } from '../../contexts';
 import { scrollToElement } from '../../helpers';
+import { Github, Send } from '../../assets/icons';
 import { Styled } from './header.styled';
 
 interface HeaderProps {
     siteAuthor: string;
-    slideRefs: RefObject<HTMLDivElement>[];
 }
 
-export const Header: React.FC<HeaderProps> = ({ siteAuthor, slideRefs }) => {
+export const Header: React.FC<HeaderProps> = ({ siteAuthor }) => {
+    const { slideRefs, setShouldShowArrow } = useSlidesContext();
+
     const handleContactScroll = () => {
+        setShouldShowArrow(false);
         scrollToElement(slideRefs[2]);
     };
 
     const handleAboutScroll = () => {
+        setShouldShowArrow(true);
         scrollToElement(slideRefs[0]);
     };
 
