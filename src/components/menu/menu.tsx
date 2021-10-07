@@ -1,31 +1,49 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Github, Linkedin, Send } from '../../assets/icons';
 
-import { useMenuContext } from '../../contexts';
+import { useMenuContext, useSlidesContext } from '../../contexts';
+import { scrollToElement } from '../../helpers';
 import { Portal } from '../portal';
-
-const Wrapper = styled('div')`
-    background-color: #87afff;
-    height: 300px;
-    width: 300px;
-    border: 5px solid black;
-    border-top: none;
-    border-right: none;
-    display: flex;
-    flex-direction: column;
-    z-index: 10000000;
-    position: absolute;
-    top: 96px;
-    right: 0;
-    font-family: 'Inter';
-`;
+import { Styled } from './menu.styled';
 
 export const Menu: React.FC = () => {
-    const { isMenuOpen } = useMenuContext();
+    const { slideRefs } = useSlidesContext();
+    const { isMenuOpen, closeMenu } = useMenuContext();
+    const shouldNavigate = slideRefs && slideRefs.length;
+
+    const handleContactScroll = () => {
+        closeMenu();
+        scrollToElement(slideRefs[2]);
+    };
 
     return isMenuOpen ? (
         <Portal>
-            <Wrapper>Menu</Wrapper>
+            <Styled.Wrapper>
+                <Styled.LinksContainer>
+                    <Styled.Button
+                        as="a"
+                        href="https://github.com/andreafinlay"
+                        target="_blank"
+                    >
+                        <Github size={24} />
+                        github
+                    </Styled.Button>
+                    <Styled.Button
+                        as="a"
+                        href="https://linkedin.com/in/andrea-finlay/"
+                        target="_blank"
+                    >
+                        <Linkedin size={24} />
+                        linkedin
+                    </Styled.Button>
+                    {!!shouldNavigate && (
+                        <Styled.Button onClick={handleContactScroll}>
+                            <Send size={24} />
+                            contact
+                        </Styled.Button>
+                    )}
+                </Styled.LinksContainer>
+            </Styled.Wrapper>
         </Portal>
     ) : null;
 };

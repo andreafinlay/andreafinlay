@@ -60,18 +60,18 @@ export const Header: React.FC<HeaderProps> = ({ siteAuthor }) => {
                         <Styled.BurgerLine position="end" isOpen={isMenuOpen} />
                     </Styled.BurgerLineWrapper>
                 </Styled.Burger>
-                <Styled.LinksContainer>
+                <Styled.LinkGroup>
                     <Styled.Button
                         as="a"
                         href="https://github.com/andreafinlay"
-                        target="blank"
+                        target="_blank"
                     >
                         <Github size={36} />
                     </Styled.Button>
                     <Styled.Button
                         as="a"
                         href="https://linkedin.com/in/andrea-finlay/"
-                        target="blank"
+                        target="_blank"
                     >
                         <Linkedin size={36} />
                     </Styled.Button>
@@ -80,7 +80,7 @@ export const Header: React.FC<HeaderProps> = ({ siteAuthor }) => {
                             <Send size={36} />
                         </Styled.Button>
                     )}
-                </Styled.LinksContainer>
+                </Styled.LinkGroup>
             </Styled.ContentWrapper>
         </Styled.Header>
     );

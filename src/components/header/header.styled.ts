@@ -38,7 +38,7 @@ const StyledLink = styled(Link)`
     text-decoration: none;
 `;
 
-const LinksContainer = styled('div')`
+const LinkGroup = styled('div')`
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -109,7 +109,7 @@ export const Styled = {
     Title,
     Button,
     StyledLink,
-    LinksContainer,
+    LinkGroup,
     Burger,
     BurgerLineWrapper,
     BurgerLine,
