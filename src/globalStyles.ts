@@ -125,6 +125,9 @@ textarea {
   padding: 5px;
   resize: none;
 }
+textarea {
+  height: 150px;
+}
 input:focus,
 textarea:focus {
   outline: none;
