@@ -66,6 +66,8 @@ export const SEO: React.FC<SEOProps> = ({
             title={metaTitle}
             titleTemplate={`%s | ${author}`}
             meta={constantMeta.concat(meta)}
-        />
+        >
+            <script src="https://unpkg.com/@botpoison/browser" async></script>
+        </Helmet>
     );
 };
