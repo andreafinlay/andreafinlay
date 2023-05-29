@@ -1,4 +1,3 @@
-import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { breakpoint } from '../../helpers';
 
@@ -6,7 +5,8 @@ const Header = styled('header')`
     background: #87afff;
     border-top: 5px solid black;
     border-bottom: 5px solid black;
-    position: relative;
+    position: fixed;
+    width: 100%;
 `;
 
 const ContentWrapper = styled('div')`
@@ -19,7 +19,17 @@ const ContentWrapper = styled('div')`
 `;
 
 const Title = styled('h1')`
+    display: flex;
+    align-items: center;
+    width: 248px;
+    justify-content: space-between;
     margin: 0;
+`;
+
+const Logo = styled('div')`
+    ${breakpoint('lg')`
+        display: none;
+    `};
 `;
 
 const Button = styled('button')`
@@ -31,11 +41,28 @@ const Button = styled('button')`
     border: none;
     cursor: pointer;
     padding: 0;
+    user-select: none;
+
+    &:hover {
+        background-color: transparent;
+    }
 `;
 
-const StyledLink = styled(Link)`
+const Link = styled('button')`
     color: black;
-    text-decoration: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    user-select: none;
+
+    &:hover {
+        color: #f2fb96;
+        background-color: transparent;
+    }
 `;
 
 const LinkGroup = styled('div')`
@@ -47,7 +74,7 @@ const LinkGroup = styled('div')`
         margin-left: 8px;
     }
 
-    ${breakpoint('md')`
+    ${breakpoint('lg')`
         display: none;
     `};
 `;
@@ -57,7 +84,7 @@ const Burger = styled('button')`
     padding: 0.3rem 0.5rem;
     display: none;
 
-    ${breakpoint('md')`
+    ${breakpoint('lg')`
         display: block;
     `};
 `;
@@ -108,9 +135,10 @@ export const Styled = {
     ContentWrapper,
     Title,
     Button,
-    StyledLink,
+    Link,
     LinkGroup,
     Burger,
     BurgerLineWrapper,
     BurgerLine,
+    Logo,
 };

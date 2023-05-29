@@ -1,3 +1,5 @@
+import { WheelEvent, MutableRefObject } from 'react';
+
 export const getNormalizedWheelValues = (event) => {
     const pixelStep = 10;
     const lineHeight = 40;
@@ -54,11 +56,8 @@ export const getNormalizedWheelValues = (event) => {
 
 export const scrollHorizontally = (
     event: WheelEvent,
-    ref: React.RefObject<HTMLDivElement>,
+    ref: MutableRefObject<HTMLDivElement>,
 ): { scrollPosition: number } => {
-    event.preventDefault();
-    event.stopPropagation();
-
     let scrollPosition;
 
     const wheelValues = getNormalizedWheelValues(event);
@@ -75,15 +74,21 @@ export const scrollHorizontally = (
     return { scrollPosition };
 };
 
-export const scrollToElement = (ref: React.RefObject<HTMLDivElement>) => {
-    ref.current.scrollIntoView({ behavior: 'smooth', inline: 'start' });
+export const scrollToElement = (ref: MutableRefObject<HTMLDivElement>) => {
+    if (ref && ref.current) {
+        ref.current.scrollIntoView({ behavior: 'smooth', inline: 'start' });
+    }
 };
 
-export const getOffset = (ref: React.RefObject<HTMLDivElement>) => {
+export const getOffset = (ref: MutableRefObject<HTMLDivElement>) => {
     const rect = ref?.current?.getBoundingClientRect();
-    const scrollLeft =
-        window.pageXOffset || document.documentElement.scrollLeft;
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    let scrollLeft;
+    let scrollTop;
+
+    if (window && document) {
+        scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+        scrollTop = window.scrollY || document.documentElement.scrollTop;
+    }
 
     return { top: rect?.top + scrollTop, left: rect?.left + scrollLeft };
 };

@@ -3,9 +3,10 @@
   "extends": [
     "standard",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
   ],
-  "plugins": ["@typescript-eslint", "prettier", "react"],
+  "plugins": ["@typescript-eslint", "prettier", "react", "react-hooks"],
   "parserOptions": {
     "ecmaVersion": 2015,
     "sourceType": "module",
@@ -30,7 +31,9 @@
     "multiline-ternary": "off",
 
     "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": ["error"]
+    "@typescript-eslint/no-use-before-define": ["error"],
+
+    "react-hooks/exhaustive-deps": "warn"
   },
   "settings": {
     "react": {

@@ -13,6 +13,9 @@ module.exports = {
         'gatsby-plugin-typescript',
         'gatsby-plugin-styled-components',
         'gatsby-plugin-react-helmet',
+        'gatsby-plugin-image',
+        'gatsby-transformer-sharp',
+        'gatsby-plugin-sharp',
         {
             resolve: 'gatsby-source-filesystem',
             options: {
@@ -20,9 +23,33 @@ module.exports = {
                 path: path.join(__dirname, '/src/images'),
             },
         },
-        'gatsby-plugin-image',
-        'gatsby-transformer-sharp',
-        'gatsby-plugin-sharp',
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                name: 'markdown-pages',
+                path: path.join(__dirname, '/src/content'),
+            },
+        },
+        {
+            resolve: 'gatsby-plugin-mdx',
+            options: {
+                gatsbyRemarkPlugins: [
+                    {
+                        resolve: 'gatsby-remark-images',
+                        options: {
+                            maxWidth: 600,
+                            height: 500,
+                            wrapperStyle: {
+                                position: 'absolute',
+                                width: '100px',
+                                height: '100px',
+                            }
+                        }
+                    },
+                    'gatsby-remark-static-images',
+                ],
+            }
+        },
         {
             resolve: 'gatsby-plugin-manifest',
             options: {
@@ -36,26 +63,16 @@ module.exports = {
             },
         },
         {
-            resolve: 'gatsby-source-filesystem',
-            options: {
-                name: 'markdown-pages',
-                path: path.join(__dirname, '/src/content'),
-            },
-        },
-        'gatsby-plugin-mdx',
-        {
             resolve: 'gatsby-plugin-google-fonts',
             options: {
                 fonts: [
                     'NTR',
-                    'Inter', // you can also specify font weights and styles
+                    'Inter:300,400,400i,500,600,700,800,900',
                 ],
                 display: 'swap',
             },
         },
         'gatsby-plugin-portal',
-        // this (optional) plugin enables Progressive Web App + Offline functionality
-        // To learn more, visit: https://gatsby.dev/offline
-        // `gatsby-plugin-offline`,
+        'gatsby-plugin-smoothscroll',
     ],
 };

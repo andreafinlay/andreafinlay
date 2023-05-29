@@ -1,5 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { MdxEdge } from './../graphql';
+// @ts-expect-error: Module not found
+import { MdxEdge } from '../graphql';
 
 export const useAllMdx = (): MdxEdge[] => {
     const data = useStaticQuery(graphql`
@@ -10,8 +11,16 @@ export const useAllMdx = (): MdxEdge[] => {
                         body
                         id
                         frontmatter {
+                            slug
                             title
                             id
+                            demo
+                            github
+                            image {
+                                childImageSharp {
+                                    gatsbyImageData(width: 800)
+                                }
+                            }
                         }
                     }
                 }

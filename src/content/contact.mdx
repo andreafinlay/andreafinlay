@@ -1,7 +1,7 @@
 ---
 slug: 'contact'
 title: 'contact'
-id: 3
+id: 4
 ---
 
 <form
@@ -9,6 +9,12 @@ id: 3
     action="https://submit-form.com/ShQM7UW9"
     data-botpoison-public-key="pk_dc4ae956-01c6-4b6d-8df9-78df3813348d"
 >
+    <input
+        type="hidden"
+        name="_redirect"
+        value="https://andreafinlay.com/#contact"
+    />
+    <input type="hidden" name="_append" value="false" />
     <div>
         <label for="name">name</label>
         <input type="text" id="name" name="name" placeholder="name" required />
@@ -23,7 +29,7 @@ id: 3
             required
         />
     </div>
-    <div>
+    <div style={{ height: '100%' }}>
         <label for="message">message</label>
         <textarea id="message" name="message" placeholder="message" required />
     </div>

@@ -27,11 +27,21 @@ const Button = styled('button')`
     & > * {
         margin-right: 16px;
     }
+
+    &:hover {
+        background-color: transparent;
+        text-decoration: none;
+        color: #f2fb96;
+    }
 `;
 
 const StyledLink = styled(Link)`
     color: black;
     text-decoration: none;
+
+    &:hover {
+        background-color: transparent;
+    }
 `;
 
 const LinksContainer = styled('div')`

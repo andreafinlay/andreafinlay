@@ -2,51 +2,18 @@ import styled from 'styled-components';
 import { breakpoint } from '../../helpers';
 
 const Wrapper = styled('div')`
-    position: absolute;
+    position: fixed;
     bottom: 0;
     top: 96px;
+    right: 2px;
+    left: 2px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-`;
 
-const ArrowWrapper = styled('button')<{ shouldShowArrow }>`
-    position: absolute;
-    display: flex;
-    align-items: center;
-    margin-left: 4rem;
-    margin-top: 6rem;
-    background-color: #87afff;
-    cursor: pointer;
-
-    -moz-animation: bounce 3s infinite;
-    -webkit-animation: bounce 3s infinite;
-    animation: bounce 3s infinite;
-
-    @keyframes bounce {
-        0%,
-        20%,
-        50%,
-        80%,
-        100% {
-            transform: translateX(0);
-        }
-        40% {
-            transform: translateX(30px);
-        }
-        60% {
-            transform: translateX(15px);
-        }
-    }
-
-    opacity: ${({ shouldShowArrow }) => (shouldShowArrow ? 1 : 0)};
-
-    ${breakpoint('md')`
-        opacity: 0;
-        display: none;
+    ${breakpoint('lg')`
+        right: 0;
+        left: 0;
     `};
-
-    transition: opacity 300ms ease-in-out;
 `;
 
 const ScrollWrapper = styled('div')`
@@ -56,7 +23,7 @@ const ScrollWrapper = styled('div')`
     align-items: center;
     overflow-x: scroll;
 
-    ${breakpoint('md')`
+    ${breakpoint('lg')`
         flex-direction: column;
         margin: 0;
     `};
@@ -64,6 +31,5 @@ const ScrollWrapper = styled('div')`
 
 export const Styled = {
     Wrapper,
-    ArrowWrapper,
     ScrollWrapper,
 };
