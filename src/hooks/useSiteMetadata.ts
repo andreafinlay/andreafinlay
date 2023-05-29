@@ -1,4 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
+// @ts-expect-error: Module not found
 import { SiteSiteMetadata } from './../graphql';
 
 export const useSiteMetadata = (): SiteSiteMetadata => {
