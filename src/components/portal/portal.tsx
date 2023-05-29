@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 const portalRoot =
     typeof document !== 'undefined' ? document.getElementById('portal') : null;
 
-export const Portal: React.FC = ({ children }) => {
+export const Portal: FC = ({ children }) => {
     const container =
         typeof document !== 'undefined' ? document.createElement('div') : null;
 
@@ -14,7 +14,7 @@ export const Portal: React.FC = ({ children }) => {
         return () => {
             portalRoot.removeChild(container);
         };
-    }, [portalRoot]);
+    }, [container]);
 
     return portalRoot ? ReactDOM.createPortal(children, container) : null;
 };
