@@ -1,49 +1,44 @@
 import React, { forwardRef, Ref } from 'react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { MDXProvider } from '@mdx-js/react';
-import styled from 'styled-components';
+import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
 import { Styled } from './slide.styled';
+import { ArrowRight, Github } from '../../assets/icons';
 
 interface SlideProps {
     title: string;
     body: string;
     id: string;
+    image?: IGatsbyImageData;
+    demo?: string;
+    github?: string;
 }
 
-const StyledForm = styled('form')`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    *:nth-child(2) {
-        margin-bottom: 8px;
-    }
-`;
-
-const StyledDiv = styled('div')`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-
-    margin-bottom: 0;
-`;
-
-const MDXComponents = {
-    form: StyledForm,
-    div: StyledDiv,
-};
-
 export const Slide = forwardRef(
-    ({ title, body, id }: SlideProps, ref: Ref<HTMLDivElement>) => {
+    (
+        { title, body, id, image, demo, github }: SlideProps,
+        ref: Ref<HTMLDivElement>,
+    ) => {
+        const img = getImage(image);
+
         return (
             <Styled.Slide id={id} ref={ref}>
-                <h1>{title}</h1>
-                <MDXProvider components={MDXComponents}>
-                    <MDXRenderer>{body}</MDXRenderer>
-                </MDXProvider>
+                <Styled.Header>
+                    <h1>{title}</h1>
+                    {demo && (
+                        <Styled.Link as="a" href={demo}>
+                            Live
+                            <ArrowRight size={24} />
+                        </Styled.Link>
+                    )}
+                    {github && (
+                        <Styled.Link as="a" href={github}>
+                            <Github size={24} />
+                        </Styled.Link>
+                    )}
+                </Styled.Header>
+                <MDXRenderer>{body}</MDXRenderer>
+                {img && <GatsbyImage alt="image" image={img} />}
             </Styled.Slide>
         );
     },
