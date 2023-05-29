@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { FC } from 'react';
+import scrollTo from 'gatsby-plugin-smoothscroll';
 import { Github, Linkedin, Send } from '../../assets/icons';
-
 import { useMenuContext, useSlidesContext } from '../../contexts';
-import { scrollToElement } from '../../helpers';
 import { Portal } from '../portal';
 import { Styled } from './menu.styled';
 
-export const Menu: React.FC = () => {
-    const { slideRefs } = useSlidesContext();
+export const Menu: FC = () => {
+    const { slideRefs, showArrow, setNextSlide } = useSlidesContext();
     const { isMenuOpen, closeMenu } = useMenuContext();
-    const shouldNavigate = slideRefs && slideRefs.length;
 
     const handleContactScroll = () => {
+        showArrow();
         closeMenu();
-        scrollToElement(slideRefs[2]);
+
+        scrollTo('#contact');
+
+        setTimeout(() => {
+            if (window) {
+                window.location.hash = '#contact';
+            }
+        }, 700);
+
+        setNextSlide(slideRefs.current[slideRefs.current.length]);
     };
 
     return isMenuOpen ? (
@@ -36,12 +44,10 @@ export const Menu: React.FC = () => {
                         <Linkedin size={24} />
                         linkedin
                     </Styled.Button>
-                    {!!shouldNavigate && (
-                        <Styled.Button onClick={handleContactScroll}>
-                            <Send size={24} />
-                            contact
-                        </Styled.Button>
-                    )}
+                    <Styled.Button as="a" onClick={handleContactScroll}>
+                        <Send size={24} />
+                        contact
+                    </Styled.Button>
                 </Styled.LinksContainer>
             </Styled.Wrapper>
         </Portal>

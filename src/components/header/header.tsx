@@ -1,53 +1,61 @@
 /* eslint-disable quotes */
-import React from 'react';
-
+import React, { FC } from 'react';
+import scrollTo from 'gatsby-plugin-smoothscroll';
 import { useMenuContext, useSlidesContext } from '../../contexts';
-import { scrollToElement } from '../../helpers';
 import { Github, Linkedin, Send } from '../../assets/icons';
 import { Styled } from './header.styled';
+import { Logo } from '../logo';
 
 interface HeaderProps {
     siteAuthor: string;
 }
 
-export const Header: React.FC<HeaderProps> = ({ siteAuthor }) => {
-    const { slideRefs, setShouldShowArrow } = useSlidesContext();
-    const shouldNavigate = slideRefs && slideRefs.length;
-    const { isMenuOpen, openMenu, closeMenu } = useMenuContext();
+export const Header: FC<HeaderProps> = ({ siteAuthor }) => {
+    const { slideRefs, showArrow, hideArrow, setNextSlide } =
+        useSlidesContext();
+    const { isMenuOpen, toggleMenu, closeMenu } = useMenuContext();
 
     const handleContactScroll = () => {
-        setShouldShowArrow(false);
-        scrollToElement(slideRefs[2]);
+        showArrow();
+
+        scrollTo('#contact');
+
+        setTimeout(() => {
+            if (window) {
+                window.location.hash = '#contact';
+            }
+        }, 700);
+
+        setNextSlide(slideRefs.current[slideRefs.current.length]);
     };
 
     const handleAboutScroll = () => {
-        setShouldShowArrow(true);
-        scrollToElement(slideRefs[0]);
-    };
+        hideArrow();
+        closeMenu();
 
-    const handleOpenMenu = () => {
-        if (!isMenuOpen) {
-            openMenu();
-        } else {
-            closeMenu();
-        }
+        scrollTo('#about');
+
+        setTimeout(() => {
+            if (window) {
+                window.location.hash = '#about';
+            }
+        }, 700);
+
+        setNextSlide(slideRefs.current[1]);
     };
 
     return (
         <Styled.Header>
             <Styled.ContentWrapper>
                 <Styled.Title>
-                    {shouldNavigate ? (
-                        <Styled.Button onClick={handleAboutScroll}>
-                            {siteAuthor}
-                        </Styled.Button>
-                    ) : (
-                        <Styled.StyledLink to="/">
-                            {siteAuthor}
-                        </Styled.StyledLink>
-                    )}
+                    <Styled.Logo>
+                        <Logo />
+                    </Styled.Logo>
+                    <Styled.Button onClick={handleAboutScroll}>
+                        {siteAuthor}
+                    </Styled.Button>
                 </Styled.Title>
-                <Styled.Burger onClick={handleOpenMenu}>
+                <Styled.Burger onClick={toggleMenu}>
                     <Styled.BurgerLineWrapper isOpen={isMenuOpen}>
                         <Styled.BurgerLine
                             position="start"
@@ -61,25 +69,23 @@ export const Header: React.FC<HeaderProps> = ({ siteAuthor }) => {
                     </Styled.BurgerLineWrapper>
                 </Styled.Burger>
                 <Styled.LinkGroup>
-                    <Styled.Button
+                    <Styled.Link
                         as="a"
                         href="https://github.com/andreafinlay"
                         target="_blank"
                     >
                         <Github size={36} />
-                    </Styled.Button>
-                    <Styled.Button
+                    </Styled.Link>
+                    <Styled.Link
                         as="a"
                         href="https://linkedin.com/in/andrea-finlay/"
                         target="_blank"
                     >
                         <Linkedin size={36} />
-                    </Styled.Button>
-                    {!!shouldNavigate && (
-                        <Styled.Button onClick={handleContactScroll}>
-                            <Send size={36} />
-                        </Styled.Button>
-                    )}
+                    </Styled.Link>
+                    <Styled.Link onClick={handleContactScroll}>
+                        <Send size={36} />
+                    </Styled.Link>
                 </Styled.LinkGroup>
             </Styled.ContentWrapper>
         </Styled.Header>
