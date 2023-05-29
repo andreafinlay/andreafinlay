@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Helmet from 'react-helmet';
 
 import { useSiteMetadata } from '../../hooks';
@@ -12,7 +12,7 @@ interface SEOProps {
     pageTitle: string;
 }
 
-export const SEO: React.FC<SEOProps> = ({
+export const SEO: FC<SEOProps> = ({
     pageDescription,
     lang = 'en',
     meta = [],
@@ -64,7 +64,7 @@ export const SEO: React.FC<SEOProps> = ({
                 lang,
             }}
             title={metaTitle}
-            titleTemplate={`%s | ${author}`}
+            titleTemplate={`${author} | web developer`}
             meta={constantMeta.concat(meta)}
         >
             <script src="https://unpkg.com/@botpoison/browser" async></script>
