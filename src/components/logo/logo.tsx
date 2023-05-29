@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
+// @ts-expect-error: Module not found
 import { ExampleImageQuery } from '../../graphql';
 
-export const Image: React.FC = () => {
+export const Logo: FC = () => {
     const data: ExampleImageQuery = useStaticQuery(graphql`
         query ExampleImage {
-            file(relativePath: { eq: "uwuhaul.png" }) {
+            file(relativePath: { eq: "sparkles.png" }) {
                 childImageSharp {
-                    gatsbyImageData(layout: FIXED, width: 200)
+                    gatsbyImageData(layout: FIXED, width: 36)
                 }
             }
         }
@@ -16,7 +17,7 @@ export const Image: React.FC = () => {
 
     return (
         <GatsbyImage
-            image={data.file.childImageSharp.gatsbyImageData}
+            image={data?.file?.childImageSharp?.gatsbyImageData}
             alt="image"
         />
     );
