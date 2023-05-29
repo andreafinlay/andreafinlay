@@ -10,12 +10,14 @@ export interface MenuContextProps {
     isMenuOpen: boolean;
     openMenu: () => void;
     closeMenu: () => void;
+    toggleMenu: () => void;
 }
 
 const defaultState = {
     isMenuOpen: false,
     openMenu: () => null,
     closeMenu: () => null,
+    toggleMenu: () => null,
 };
 
 export const MenuContext = createContext<MenuContextProps>(defaultState);
@@ -31,12 +33,21 @@ export const MenuContextProvider: FC = ({ children }): ReactElement => {
         setIsMenuOpen(false);
     };
 
+    const toggleMenu = () => {
+        if (!isMenuOpen) {
+            openMenu();
+        } else {
+            closeMenu();
+        }
+    };
+
     return (
         <MenuContext.Provider
             value={{
                 isMenuOpen,
                 openMenu,
                 closeMenu,
+                toggleMenu,
             }}
         >
             {children}
