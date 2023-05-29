@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
-
+import React, { FC, ReactNode } from 'react';
+import { MDXProvider } from '@mdx-js/react';
 import { GlobalStyles } from '../../globalStyles';
 import { MenuContextProvider } from '../../contexts';
 import { useSiteMetadata } from '../../hooks';
@@ -11,19 +11,30 @@ interface LayoutProps {
     children: ReactNode;
 }
 
-export const Layout: React.FC<LayoutProps> = ({ children }) => {
+const MDXComponents = {
+    form: Styled.StyledForm,
+    div: Styled.StyledDiv,
+    span: Styled.StyledSpan,
+    input: Styled.StyledInput,
+    textarea: Styled.StyledTextArea,
+    p: Styled.StyledP,
+};
+
+export const Layout: FC<LayoutProps> = ({ children }) => {
     const { author } = useSiteMetadata();
 
     return (
         <>
             <GlobalStyles />
-            <MenuContextProvider>
-                <Header siteAuthor={author} />
-                <Menu />
-            </MenuContextProvider>
-            <Styled.LayoutBody>
-                <main>{children}</main>
-            </Styled.LayoutBody>
+            <MDXProvider components={MDXComponents}>
+                <MenuContextProvider>
+                    <Header siteAuthor={author} />
+                    <Menu />
+                </MenuContextProvider>
+                <Styled.LayoutBody>
+                    <main>{children}</main>
+                </Styled.LayoutBody>
+            </MDXProvider>
         </>
     );
 };
