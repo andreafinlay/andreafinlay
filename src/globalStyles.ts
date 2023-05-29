@@ -45,12 +45,17 @@ template {
   display: none;
 }
 a {
+  color: #9e96fb;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 700;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
 a:active,
 a:hover {
   outline-width: 0;
+  text-decoration: underline;
 }
 abbr[title] {
   border-bottom: none;
@@ -116,6 +121,11 @@ select {
   font: inherit;
   margin: 0;
   border: 3px solid black;
+  cursor: pointer;
+  background-color: #fb96c0;
+}
+button:hover {
+  background-color: #F965A3;
 }
 input,
 textarea {
@@ -220,7 +230,7 @@ html {
 }
 body {
   color: black;
-  font-weight: normal;
+  font-weight: 500;
   word-wrap: break-word;
   font-kerning: normal;
   -moz-font-feature-settings: "kern", "liga", "clig", "calt";
