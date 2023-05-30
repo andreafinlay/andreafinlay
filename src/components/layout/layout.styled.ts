@@ -34,7 +34,6 @@ const StyledDiv = styled('div')`
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-
     margin-bottom: 0;
 `;
 
@@ -55,10 +54,6 @@ const StyledTextArea = styled('textarea')`
     `};
 `;
 
-const StyledP = styled('p')`
-    margin: 0;
-`;
-
 export const Styled = {
     LayoutBody,
     StyledForm,
@@ -66,5 +61,4 @@ export const Styled = {
     StyledSpan,
     StyledInput,
     StyledTextArea,
-    StyledP,
 };

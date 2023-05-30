@@ -17,7 +17,6 @@ const MDXComponents = {
     span: Styled.StyledSpan,
     input: Styled.StyledInput,
     textarea: Styled.StyledTextArea,
-    p: Styled.StyledP,
 };
 
 export const Layout: FC<LayoutProps> = ({ children }) => {
