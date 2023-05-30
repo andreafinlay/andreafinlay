@@ -1,7 +1,11 @@
 export { default as ArrowRight } from './ArrowRight';
 export { default as Bandcamp } from './Bandcamp';
+export { default as CheckCircle } from './CheckCircle';
+export { default as ExternalLink } from './ExternalLink';
 export { default as Github } from './Github';
 export { default as Instagram } from './Instagram';
 export { default as Linkedin } from './Linkedin';
+export { default as Moon } from './Moon';
 export { default as Send } from './Send';
 export { default as Soundcloud } from './Soundcloud';
+export { default as Sun } from './Sun';
