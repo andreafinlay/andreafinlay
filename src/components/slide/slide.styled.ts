@@ -28,6 +28,12 @@ const Slide = styled('div')`
             margin-left: 0px;
         `};
     }
+
+    & > :last-child {
+        margin-top: auto;
+        margin-bottom: 0;
+        align-self: center;
+    }
 `;
 
 const Header = styled('div')`
@@ -35,24 +41,24 @@ const Header = styled('div')`
     align-items: flex-start;
 
     & > * {
-        margin-right: 16px;
+        margin-right: 12px;
     }
 `;
 
 const Link = styled('button')`
     color: black;
-    background-color: transparent;
+    background-color: #fb96c0;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
     cursor: pointer;
-    padding: 0;
-    user-select: none;
+    padding: 4px;
+    border: 3px solid black;
+    border-radius: 20%;
+    margin-top: -8px;
 
     &:hover {
-        color: #f965a3;
-        background-color: transparent;
+        background-color: #f965a3;
     }
 `;
 

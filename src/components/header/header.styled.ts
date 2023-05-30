@@ -21,12 +21,16 @@ const ContentWrapper = styled('div')`
 const Title = styled('h1')`
     display: flex;
     align-items: center;
-    width: 248px;
+    width: 234px;
     justify-content: space-between;
     margin: 0;
 `;
 
 const Logo = styled('div')`
+    & img {
+        border: 0;
+    }
+
     ${breakpoint('lg')`
         display: none;
     `};
@@ -50,18 +54,18 @@ const Button = styled('button')`
 
 const Link = styled('button')`
     color: black;
-    background-color: transparent;
+    background-color: #fb96c0;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
     cursor: pointer;
-    padding: 0;
-    user-select: none;
+    padding: 4px;
+    border: 3px solid black;
+    border-radius: 20%;
+    margin-top: -6px;
 
     &:hover {
-        color: #f2fb96;
-        background-color: transparent;
+        background-color: #f965a3;
     }
 `;
 
