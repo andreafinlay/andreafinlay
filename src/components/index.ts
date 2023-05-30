@@ -7,3 +7,4 @@ export * from './portal';
 export * from './menu';
 export * from './logo';
 export * from './navArrow';
+export * from './linkButton';

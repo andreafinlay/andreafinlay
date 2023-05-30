@@ -3,7 +3,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
 import { Styled } from './slide.styled';
-import { ArrowRight, Github } from '../../assets/icons';
+import { ExternalLink, Github } from '../../assets/icons';
 
 interface SlideProps {
     title: string;
@@ -27,8 +27,7 @@ export const Slide = forwardRef(
                     <h1>{title}</h1>
                     {demo && (
                         <Styled.Link as="a" href={demo}>
-                            Live
-                            <ArrowRight size={24} />
+                            <ExternalLink size={24} />
                         </Styled.Link>
                     )}
                     {github && (
