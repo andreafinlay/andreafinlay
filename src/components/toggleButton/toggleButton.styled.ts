@@ -11,7 +11,7 @@ const Button = styled('button')`
     margin-left: 24px;
 
     &:hover {
-        background-color: ${({ theme }) => theme.text};
+        background-color: ${({ theme }) => theme.toggleHover};
         color: ${({ theme }) => theme.body};
     }
 `;

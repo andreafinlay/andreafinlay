@@ -31,7 +31,11 @@ const Title = styled('h1')`
     margin: 0;
 
     ${breakpoint('lg')`
-        font-size: 1.5rem;
+        align-items: center;
+    `};
+
+    ${breakpoint('sm')`
+        font-size: 1.4rem;
         align-items: center;
     `};
 `;
@@ -45,7 +49,6 @@ const Logo = styled('div')`
 
     ${breakpoint('lg')`
         margin-right: 8px;
-
     `};
 `;
 
