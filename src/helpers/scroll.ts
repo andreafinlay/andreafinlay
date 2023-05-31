@@ -13,7 +13,6 @@ export const getNormalizedWheelValues = (event) => {
     if ('detail' in event) sY = event.detail;
     else if ('wheelDelta' in event) sY = event.wheelDelta / -120;
     else if ('wheelDeltaY' in event) sY = event.wheelDeltaY / -120;
-
     if ('wheelDeltaX' in event) sX = event.wheelDeltaX / -120;
 
     // Side scrolling on FF with DOMMouseScroll.

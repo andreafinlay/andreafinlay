@@ -8,7 +8,7 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   box-sizing: border-box;
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 body {
   background: ${({ theme }) => theme.body};
@@ -24,6 +24,7 @@ body {
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";
   transition: all 0.1s linear;
+  overflow-y: hidden;
 }
 main {
   height: 100%;
@@ -155,7 +156,6 @@ img {
   max-height: 400px;
   border: 3px solid;
   border-color: ${({ theme }) => theme.border};
-  border-radius: 12px;
 }
 svg:not(:root) {
   overflow: hidden;
@@ -303,7 +303,6 @@ pre {
   font-size: 0.85rem;
   line-height: 1.42;
   background: hsla(0, 0%, 0%, 0.04);
-  border-radius: 3px;
   overflow: auto;
   word-wrap: normal;
   padding: 1.45rem;
@@ -413,7 +412,6 @@ td:last-child {
 }
 code {
   background-color: hsla(0, 0%, 0%, 0.04);
-  border-radius: 3px;
   font-family: "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono",
     "Liberation Mono", Menlo, Courier, monospace;
   padding: 0;

@@ -1,4 +1,3 @@
-import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 const Wrapper = styled('div')`
@@ -30,15 +29,6 @@ const Button = styled('button')`
     }
 `;
 
-const StyledLink = styled(Link)`
-    color: black;
-    text-decoration: none;
-
-    &:hover {
-        background-color: transparent;
-    }
-`;
-
 const LinksContainer = styled('div')`
     display: flex;
     flex-direction: column;
@@ -54,6 +44,5 @@ const LinksContainer = styled('div')`
 export const Styled = {
     Wrapper,
     Button,
-    StyledLink,
     LinksContainer,
 };

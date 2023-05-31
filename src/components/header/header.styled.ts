@@ -18,6 +18,10 @@ const ContentWrapper = styled('div')`
     align-items: center;
     justify-content: space-between;
     user-select: none;
+
+    ${breakpoint('lg')`
+        margin: 0 1rem;
+    `};
 `;
 
 const Title = styled('h1')`
@@ -28,6 +32,7 @@ const Title = styled('h1')`
 
     ${breakpoint('lg')`
         font-size: 1.5rem;
+        align-items: center;
     `};
 `;
 
@@ -70,7 +75,6 @@ const Link = styled('button')`
     padding: 4px;
     border: 3px solid;
     border-color: ${({ theme }) => theme.border};
-    border-radius: 20%;
 
     &:hover {
         background-color: ${({ theme }) => theme.buttonHover};
@@ -107,7 +111,11 @@ const MobileGroup = styled('div')`
 
 const Burger = styled('button')`
     cursor: pointer;
-    padding: 0.5rem 0.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
 `;
 
 const BurgerLineWrapper = styled('div')<{ isOpen: boolean }>`
@@ -127,6 +135,7 @@ const BurgerLine = styled('div')<{
     background-color: ${({ theme }) => theme.text};
     height: 0.25rem;
     transition: transform 300ms cubic-bezier(0.54, -0.81, 0.57, 0.57);
+    border-radius: 3px;
 
     ${({ position, isOpen }) => {
         if (position === 'start') {
@@ -134,11 +143,11 @@ const BurgerLine = styled('div')<{
                 return 'transform: rotate(90deg) translateX(0.625rem)';
             }
 
-            return 'width: 0.75rem; transform-origin: right;';
+            return 'width: 1rem; transform-origin: right;';
         }
 
         if (position === 'center') {
-            return 'width: 1.25rem; transition: none;';
+            return 'width: 2rem; transition: none;';
         }
 
         if (position === 'end') {
@@ -146,7 +155,7 @@ const BurgerLine = styled('div')<{
                 return 'transform: rotate(90deg) translateX(-0.625rem);';
             }
 
-            return 'width: 0.75rem; transform-origin: left;';
+            return 'width: 1rem; transform-origin: left;';
         }
     }}
 `;

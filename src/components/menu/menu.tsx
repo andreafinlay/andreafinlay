@@ -33,7 +33,7 @@ export const Menu: FC = () => {
                         href="https://github.com/andreafinlay"
                         target="_blank"
                     >
-                        <Github size={24} />
+                        <Github size={36} />
                         github
                     </Styled.Button>
                     <Styled.Button
@@ -41,11 +41,11 @@ export const Menu: FC = () => {
                         href="https://linkedin.com/in/andrea-finlay/"
                         target="_blank"
                     >
-                        <Linkedin size={24} />
+                        <Linkedin size={36} />
                         linkedin
                     </Styled.Button>
                     <Styled.Button as="a" onClick={handleContactScroll}>
-                        <Send size={24} />
+                        <Send size={36} />
                         contact
                     </Styled.Button>
                 </Styled.LinksContainer>
