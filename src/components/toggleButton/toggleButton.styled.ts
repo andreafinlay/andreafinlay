@@ -8,7 +8,7 @@ const Button = styled('button')`
     border-radius: 25%;
     background-color: ${({ theme }) => theme.text};
     color: ${({ theme }) => theme.body};
-    border-color: ${({ theme }) => theme.body};
+    border-color: ${({ theme }) => theme.text};
     margin-left: 24px;
 
     &:hover {
