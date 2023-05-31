@@ -32,7 +32,7 @@ const StyledDiv = styled('div')`
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     margin-bottom: 0;
 `;

@@ -2,9 +2,11 @@ import styled from 'styled-components';
 import { breakpoint } from '../../helpers';
 
 const Header = styled('header')`
-    background: #87afff;
-    border-top: 5px solid black;
-    border-bottom: 5px solid black;
+    background: ${({ theme }) => theme.accent};
+    border-top: 5px solid;
+    border-top-color: ${({ theme }) => theme.border};
+    border-bottom: 5px solid;
+    border-bottom-color: ${({ theme }) => theme.border};
     position: fixed;
     width: 100%;
 `;
@@ -53,19 +55,19 @@ const Button = styled('button')`
 `;
 
 const Link = styled('button')`
-    color: black;
-    background-color: #fb96c0;
+    color: ${({ theme }) => theme.text};
+    background-color: ${({ theme }) => theme.button};
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     padding: 4px;
-    border: 3px solid black;
+    border: 3px solid;
+    border-color: ${({ theme }) => theme.border};
     border-radius: 20%;
-    margin-top: -6px;
 
     &:hover {
-        background-color: #f965a3;
+        background-color: ${({ theme }) => theme.buttonHover};
     }
 `;
 

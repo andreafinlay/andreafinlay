@@ -1,10 +1,10 @@
 import React from 'react';
-
 import { SlidesContextProvider } from '../contexts';
 import { Content, Layout, SEO } from '../components';
+import { ThemeContextProvider } from '../contexts/themeContext';
 
-const IndexPage = () => {
-    return (
+const IndexPage = () => (
+    <ThemeContextProvider>
         <SlidesContextProvider>
             <Layout>
                 <SEO
@@ -14,7 +14,7 @@ const IndexPage = () => {
                 <Content />
             </Layout>
         </SlidesContextProvider>
-    );
-};
+    </ThemeContextProvider>
+);
 
 export default IndexPage;

@@ -5,6 +5,7 @@ import { useMenuContext, useSlidesContext } from '../../contexts';
 import { Github, Linkedin, Send } from '../../assets/icons';
 import { Styled } from './header.styled';
 import { Logo } from '../logo';
+import { ToggleButton } from '../toggleButton';
 
 interface HeaderProps {
     siteAuthor: string;
@@ -86,6 +87,7 @@ export const Header: FC<HeaderProps> = ({ siteAuthor }) => {
                     <Styled.Link onClick={handleContactScroll}>
                         <Send size={36} />
                     </Styled.Link>
+                    <ToggleButton />
                 </Styled.LinkGroup>
             </Styled.ContentWrapper>
         </Styled.Header>

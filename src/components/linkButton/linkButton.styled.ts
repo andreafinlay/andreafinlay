@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Button = styled('button')`
-    color: #0049d6;
+    color: ${({ theme }) => theme.link};
     cursor: pointer;
     text-decoration: none;
     font-weight: 700;
@@ -10,7 +10,7 @@ const Button = styled('button')`
     border: none;
     padding: 0;
 
-    & :hover {
+    &:hover {
         background-color: transparent;
         text-decoration: underline;
     }
