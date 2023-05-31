@@ -23,9 +23,12 @@ const ContentWrapper = styled('div')`
 const Title = styled('h1')`
     display: flex;
     align-items: center;
-    width: 234px;
     justify-content: space-between;
     margin: 0;
+
+    ${breakpoint('lg')`
+        font-size: 1.5rem;
+    `};
 `;
 
 const Logo = styled('div')`
@@ -33,8 +36,11 @@ const Logo = styled('div')`
         border: 0;
     }
 
+    margin-right: 16px;
+
     ${breakpoint('lg')`
-        display: none;
+        margin-right: 8px;
+
     `};
 `;
 
@@ -91,7 +97,7 @@ const MobileGroup = styled('div')`
     justify-content: center;
 
     & > * {
-        margin-left: 16px;
+        margin-left: 8px;
     }
 
     ${breakpoint('lg')`
@@ -101,7 +107,7 @@ const MobileGroup = styled('div')`
 
 const Burger = styled('button')`
     cursor: pointer;
-    padding: 0.4rem 0.6rem;
+    padding: 0.5rem 0.7rem;
 `;
 
 const BurgerLineWrapper = styled('div')<{ isOpen: boolean }>`

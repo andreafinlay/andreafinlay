@@ -50,7 +50,7 @@ const StyledTextArea = styled('textarea')`
     width: 100%;
 
     ${breakpoint('lg')`
-        height: 300px;
+        height: 240px;
     `};
 `;
 
