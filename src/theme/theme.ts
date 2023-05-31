@@ -21,6 +21,7 @@ export const lightTheme = {
     fieldFocus: '#0049D6',
     button: '#fb96c0',
     buttonHover: '#F965A3',
+    toggleHover: '#373737',
 };
 
 export const darkTheme = {
@@ -33,4 +34,5 @@ export const darkTheme = {
     fieldFocus: '#65f9bb',
     button: '#a8287f',
     buttonHover: '#CF349D',
+    toggleHover: '#e6e6e6',
 };

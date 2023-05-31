@@ -56,7 +56,6 @@ const Link = styled('button')`
     padding: 4px;
     border: 3px solid;
     border-color: ${({ theme }) => theme.border};
-    border-radius: 20%;
     margin-top: -8px;
 
     &:hover {
