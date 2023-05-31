@@ -5,6 +5,7 @@ import { useMenuContext, useSlidesContext } from '../../contexts';
 import { Github, Linkedin, Send } from '../../assets/icons';
 import { Styled } from './header.styled';
 import { Logo } from '../logo';
+import { ToggleButton } from '../toggleButton';
 
 interface HeaderProps {
     siteAuthor: string;
@@ -55,19 +56,25 @@ export const Header: FC<HeaderProps> = ({ siteAuthor }) => {
                         {siteAuthor}
                     </Styled.Button>
                 </Styled.Title>
-                <Styled.Burger onClick={toggleMenu}>
-                    <Styled.BurgerLineWrapper isOpen={isMenuOpen}>
-                        <Styled.BurgerLine
-                            position="start"
-                            isOpen={isMenuOpen}
-                        />
-                        <Styled.BurgerLine
-                            position="center"
-                            isOpen={isMenuOpen}
-                        />
-                        <Styled.BurgerLine position="end" isOpen={isMenuOpen} />
-                    </Styled.BurgerLineWrapper>
-                </Styled.Burger>
+                <Styled.MobileGroup>
+                    <ToggleButton />
+                    <Styled.Burger onClick={toggleMenu}>
+                        <Styled.BurgerLineWrapper isOpen={isMenuOpen}>
+                            <Styled.BurgerLine
+                                position="start"
+                                isOpen={isMenuOpen}
+                            />
+                            <Styled.BurgerLine
+                                position="center"
+                                isOpen={isMenuOpen}
+                            />
+                            <Styled.BurgerLine
+                                position="end"
+                                isOpen={isMenuOpen}
+                            />
+                        </Styled.BurgerLineWrapper>
+                    </Styled.Burger>
+                </Styled.MobileGroup>
                 <Styled.LinkGroup>
                     <Styled.Link
                         as="a"
@@ -86,6 +93,7 @@ export const Header: FC<HeaderProps> = ({ siteAuthor }) => {
                     <Styled.Link onClick={handleContactScroll}>
                         <Send size={36} />
                     </Styled.Link>
+                    <ToggleButton />
                 </Styled.LinkGroup>
             </Styled.ContentWrapper>
         </Styled.Header>

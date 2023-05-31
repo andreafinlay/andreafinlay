@@ -1,11 +1,14 @@
 import React, { FC, ReactNode } from 'react';
+import { ThemeProvider } from 'styled-components';
 import { MDXProvider } from '@mdx-js/react';
 import { GlobalStyles } from '../../globalStyles';
+import { lightTheme, darkTheme } from '../../theme';
 import { MenuContextProvider } from '../../contexts';
 import { useSiteMetadata } from '../../hooks';
 import { Header } from '../header';
 import { Styled } from './layout.styled';
 import { Menu } from '../menu';
+import { useThemeContext } from '../../contexts/themeContext';
 
 interface LayoutProps {
     children: ReactNode;
@@ -21,9 +24,10 @@ const MDXComponents = {
 
 export const Layout: FC<LayoutProps> = ({ children }) => {
     const { author } = useSiteMetadata();
+    const { theme, hasMounted } = useThemeContext();
 
-    return (
-        <>
+    return hasMounted ? (
+        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
             <GlobalStyles />
             <MDXProvider components={MDXComponents}>
                 <MenuContextProvider>
@@ -34,6 +38,6 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
                     <main>{children}</main>
                 </Styled.LayoutBody>
             </MDXProvider>
-        </>
-    );
+        </ThemeProvider>
+    ) : null;
 };

@@ -4,7 +4,8 @@ import { breakpoint } from '../../helpers';
 const Slide = styled('div')`
     height: 90%;
     width: 60%;
-    border: 5px solid black;
+    border: 5px solid;
+    border-color: ${({ theme }) => theme.border};
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -46,19 +47,20 @@ const Header = styled('div')`
 `;
 
 const Link = styled('button')`
-    color: black;
-    background-color: #fb96c0;
+    color: ${({ theme }) => theme.text};
+    background-color: ${({ theme }) => theme.button};
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     padding: 4px;
-    border: 3px solid black;
+    border: 3px solid;
+    border-color: ${({ theme }) => theme.border};
     border-radius: 20%;
     margin-top: -8px;
 
     &:hover {
-        background-color: #f965a3;
+        background-color: ${({ theme }) => theme.buttonHover};
     }
 `;
 

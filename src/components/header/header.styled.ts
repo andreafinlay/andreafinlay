@@ -2,9 +2,11 @@ import styled from 'styled-components';
 import { breakpoint } from '../../helpers';
 
 const Header = styled('header')`
-    background: #87afff;
-    border-top: 5px solid black;
-    border-bottom: 5px solid black;
+    background: ${({ theme }) => theme.accent};
+    border-top: 5px solid;
+    border-top-color: ${({ theme }) => theme.border};
+    border-bottom: 5px solid;
+    border-bottom-color: ${({ theme }) => theme.border};
     position: fixed;
     width: 100%;
 `;
@@ -37,7 +39,7 @@ const Logo = styled('div')`
 `;
 
 const Button = styled('button')`
-    color: black;
+    color: ${({ theme }) => theme.text};
     background-color: transparent;
     display: flex;
     align-items: center;
@@ -53,19 +55,19 @@ const Button = styled('button')`
 `;
 
 const Link = styled('button')`
-    color: black;
-    background-color: #fb96c0;
+    color: ${({ theme }) => theme.text};
+    background-color: ${({ theme }) => theme.button};
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     padding: 4px;
-    border: 3px solid black;
+    border: 3px solid;
+    border-color: ${({ theme }) => theme.border};
     border-radius: 20%;
-    margin-top: -6px;
 
     &:hover {
-        background-color: #f965a3;
+        background-color: ${({ theme }) => theme.buttonHover};
     }
 `;
 
@@ -83,14 +85,23 @@ const LinkGroup = styled('div')`
     `};
 `;
 
-const Burger = styled('button')`
-    cursor: pointer;
-    padding: 0.3rem 0.5rem;
+const MobileGroup = styled('div')`
     display: none;
+    align-items: center;
+    justify-content: center;
+
+    & > * {
+        margin-left: 16px;
+    }
 
     ${breakpoint('lg')`
-        display: block;
+        display: flex;
     `};
+`;
+
+const Burger = styled('button')`
+    cursor: pointer;
+    padding: 0.4rem 0.6rem;
 `;
 
 const BurgerLineWrapper = styled('div')<{ isOpen: boolean }>`
@@ -107,7 +118,7 @@ const BurgerLine = styled('div')<{
     position: 'start' | 'center' | 'end';
     isOpen: boolean;
 }>`
-    background-color: black;
+    background-color: ${({ theme }) => theme.text};
     height: 0.25rem;
     transition: transform 300ms cubic-bezier(0.54, -0.81, 0.57, 0.57);
 
@@ -145,4 +156,5 @@ export const Styled = {
     BurgerLineWrapper,
     BurgerLine,
     Logo,
+    MobileGroup,
 };

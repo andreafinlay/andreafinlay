@@ -1,6 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
+import { Theme } from './theme';
 
-export const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle<{
+    theme: Theme;
+}>`
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -8,10 +11,11 @@ html {
   overflow-y: scroll;
 }
 body {
+  background: ${({ theme }) => theme.body};
+  color: ${({ theme }) => theme.text};
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: black;
   font-weight: 500;
   word-wrap: break-word;
   font-kerning: normal;
@@ -19,13 +23,14 @@ body {
   -ms-font-feature-settings: "kern", "liga", "clig", "calt";
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";
+  transition: all 0.1s linear;
 }
 main {
   height: 100%;
   display: block;
 }
 a {
-  color: #0049D6;
+  color: ${({ theme }) => theme.link};
   cursor: pointer;
   text-decoration: none;
   font-weight: 700;
@@ -139,7 +144,6 @@ h6 {
   line-height: 1.1;
 }
 img {
-  border-style: none;
   max-width: 100%;
   margin-left: 0;
   margin-right: 0;
@@ -149,7 +153,8 @@ img {
   padding-right: 0;
   padding-top: 0;
   max-height: 400px;
-  border: 4px solid black;
+  border: 3px solid;
+  border-color: ${({ theme }) => theme.border};
   border-radius: 12px;
 }
 svg:not(:root) {
@@ -179,18 +184,23 @@ hr {
 button {
   font: inherit;
   margin: 0;
-  border: 3px solid black;
+  border: 3px solid;
+  border-color: ${({ theme }) => theme.border};
   cursor: pointer;
-  background-color: #fb96c0;
+  background-color: ${({ theme }) => theme.button};
+  color: ${({ theme }) => theme.text};
 }
 button:hover {
-  background-color: #F965A3;
+  background-color: ${({ theme }) => theme.buttonHover};
 }
 input,
 textarea {
   font: inherit;
   margin: 0;
-  border: 3px solid black;
+  background: ${({ theme }) => theme.field};
+  color: ${({ theme }) => theme.text};
+  border: 3px solid;
+  border-color: ${({ theme }) => theme.border};
   padding: 5px;
   resize: none;
 }
@@ -200,7 +210,11 @@ textarea {
 input:focus,
 textarea:focus {
   outline: none;
-  border: 3px solid #87afff;
+  border: 3px solid;
+  border-color: ${({ theme }) => theme.fieldFocus}
+}
+label {
+  margin-bottom: 8px;
 }
 button,
 input {

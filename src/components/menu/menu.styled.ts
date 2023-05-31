@@ -2,9 +2,10 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 const Wrapper = styled('div')`
-    background-color: #87afff;
+    background-color: ${({ theme }) => theme.accent};
     padding: 16px;
-    border: 5px solid black;
+    border: 5px solid;
+    border-color: ${({ theme }) => theme.border};
     border-top: none;
     border-right: none;
     position: absolute;
@@ -14,7 +15,7 @@ const Wrapper = styled('div')`
 `;
 
 const Button = styled('button')`
-    color: black;
+    color: ${({ theme }) => theme.text};
     background-color: transparent;
     display: flex;
     align-items: center;
@@ -26,12 +27,6 @@ const Button = styled('button')`
 
     & > * {
         margin-right: 16px;
-    }
-
-    &:hover {
-        background-color: transparent;
-        text-decoration: none;
-        color: #f2fb96;
     }
 `;
 
