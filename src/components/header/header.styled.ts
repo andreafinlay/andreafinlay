@@ -39,7 +39,7 @@ const Logo = styled('div')`
 `;
 
 const Button = styled('button')`
-    color: black;
+    color: ${({ theme }) => theme.text};
     background-color: transparent;
     display: flex;
     align-items: center;
@@ -85,14 +85,23 @@ const LinkGroup = styled('div')`
     `};
 `;
 
-const Burger = styled('button')`
-    cursor: pointer;
-    padding: 0.3rem 0.5rem;
+const MobileGroup = styled('div')`
     display: none;
+    align-items: center;
+    justify-content: center;
+
+    & > * {
+        margin-left: 16px;
+    }
 
     ${breakpoint('lg')`
-        display: block;
+        display: flex;
     `};
+`;
+
+const Burger = styled('button')`
+    cursor: pointer;
+    padding: 0.4rem 0.6rem;
 `;
 
 const BurgerLineWrapper = styled('div')<{ isOpen: boolean }>`
@@ -109,7 +118,7 @@ const BurgerLine = styled('div')<{
     position: 'start' | 'center' | 'end';
     isOpen: boolean;
 }>`
-    background-color: black;
+    background-color: ${({ theme }) => theme.text};
     height: 0.25rem;
     transition: transform 300ms cubic-bezier(0.54, -0.81, 0.57, 0.57);
 
@@ -147,4 +156,5 @@ export const Styled = {
     BurgerLineWrapper,
     BurgerLine,
     Logo,
+    MobileGroup,
 };

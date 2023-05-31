@@ -56,19 +56,25 @@ export const Header: FC<HeaderProps> = ({ siteAuthor }) => {
                         {siteAuthor}
                     </Styled.Button>
                 </Styled.Title>
-                <Styled.Burger onClick={toggleMenu}>
-                    <Styled.BurgerLineWrapper isOpen={isMenuOpen}>
-                        <Styled.BurgerLine
-                            position="start"
-                            isOpen={isMenuOpen}
-                        />
-                        <Styled.BurgerLine
-                            position="center"
-                            isOpen={isMenuOpen}
-                        />
-                        <Styled.BurgerLine position="end" isOpen={isMenuOpen} />
-                    </Styled.BurgerLineWrapper>
-                </Styled.Burger>
+                <Styled.MobileGroup>
+                    <ToggleButton />
+                    <Styled.Burger onClick={toggleMenu}>
+                        <Styled.BurgerLineWrapper isOpen={isMenuOpen}>
+                            <Styled.BurgerLine
+                                position="start"
+                                isOpen={isMenuOpen}
+                            />
+                            <Styled.BurgerLine
+                                position="center"
+                                isOpen={isMenuOpen}
+                            />
+                            <Styled.BurgerLine
+                                position="end"
+                                isOpen={isMenuOpen}
+                            />
+                        </Styled.BurgerLineWrapper>
+                    </Styled.Burger>
+                </Styled.MobileGroup>
                 <Styled.LinkGroup>
                     <Styled.Link
                         as="a"
