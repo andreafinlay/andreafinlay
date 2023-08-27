@@ -1,19 +1,19 @@
 import styled from 'styled-components';
 
-const Button = styled('button')`
+const Link = styled('button')`
+    color: ${({ theme }) => theme.text};
+    background-color: ${({ theme }) => theme.button};
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
     padding: 4px;
-    background-color: ${({ theme }) => theme.text};
-    color: ${({ theme }) => theme.body};
-    border-color: ${({ theme }) => theme.text};
-    margin-left: 28px;
+    border: 3px solid;
+    border-color: ${({ theme }) => theme.border};
     transition: 100ms ease-in-out;
 
     &:hover {
-        background-color: ${({ theme }) => theme.toggleHover};
-        color: ${({ theme }) => theme.body};
+        background-color: ${({ theme }) => theme.buttonHover};
         filter: ${({ theme }) =>
             `drop-shadow(4px 4px 0 ${theme.buttonShadow})`};
         transform: translate(-4px, -4px);
@@ -21,5 +21,5 @@ const Button = styled('button')`
 `;
 
 export const Styled = {
-    Button,
+    Link,
 };

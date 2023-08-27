@@ -9,7 +9,7 @@ export const Logo: FC = () => {
         query ExampleImage {
             file(relativePath: { eq: "sparkles.png" }) {
                 childImageSharp {
-                    gatsbyImageData(layout: FIXED, width: 36)
+                    gatsbyImageData(layout: FIXED, width: 56)
                 }
             }
         }

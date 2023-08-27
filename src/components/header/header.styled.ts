@@ -25,6 +25,7 @@ const ContentWrapper = styled('div')`
 `;
 
 const Title = styled('h1')`
+    font-size: 2.8rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -52,7 +53,7 @@ const Logo = styled('div')`
     `};
 `;
 
-const Button = styled('button')`
+const Link = styled('button')`
     color: ${({ theme }) => theme.text};
     background-color: transparent;
     display: flex;
@@ -65,22 +66,8 @@ const Button = styled('button')`
 
     &:hover {
         background-color: transparent;
-    }
-`;
-
-const Link = styled('button')`
-    color: ${({ theme }) => theme.text};
-    background-color: ${({ theme }) => theme.button};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    padding: 4px;
-    border: 3px solid;
-    border-color: ${({ theme }) => theme.border};
-
-    &:hover {
-        background-color: ${({ theme }) => theme.buttonHover};
+        filter: none;
+        transform: translate(0px, -2px);
     }
 `;
 
@@ -167,7 +154,6 @@ export const Styled = {
     Header,
     ContentWrapper,
     Title,
-    Button,
     Link,
     LinkGroup,
     Burger,

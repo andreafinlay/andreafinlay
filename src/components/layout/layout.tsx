@@ -3,12 +3,11 @@ import { ThemeProvider } from 'styled-components';
 import { MDXProvider } from '@mdx-js/react';
 import { GlobalStyles } from '../../globalStyles';
 import { lightTheme, darkTheme } from '../../theme';
-import { MenuContextProvider } from '../../contexts';
+import { MenuContextProvider, useThemeContext } from '../../contexts';
 import { useSiteMetadata } from '../../hooks';
 import { Header } from '../header';
-import { Styled } from './layout.styled';
 import { Menu } from '../menu';
-import { useThemeContext } from '../../contexts/themeContext';
+import { Styled } from './layout.styled';
 
 interface LayoutProps {
     children: ReactNode;

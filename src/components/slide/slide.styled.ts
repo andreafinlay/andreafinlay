@@ -46,25 +46,7 @@ const Header = styled('div')`
     }
 `;
 
-const Link = styled('button')`
-    color: ${({ theme }) => theme.text};
-    background-color: ${({ theme }) => theme.button};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    padding: 4px;
-    border: 3px solid;
-    border-color: ${({ theme }) => theme.border};
-    margin-top: -8px;
-
-    &:hover {
-        background-color: ${({ theme }) => theme.buttonHover};
-    }
-`;
-
 export const Styled = {
     Slide,
     Header,
-    Link,
 };

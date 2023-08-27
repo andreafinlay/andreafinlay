@@ -1,18 +1,21 @@
 export type ThemeMode = 'light' | 'dark';
 
 export interface Theme {
+    accent: string;
     body: string;
     text: string;
     border: string;
     link: string;
     field: string;
+    fieldFocus: string;
     button: string;
     buttonHover: string;
-    fieldFocus: string;
+    buttonShadow: string;
+    toggleHover: string;
 }
 
-export const lightTheme = {
-    accent: '#87afff',
+export const lightTheme: Theme = {
+    accent: '#fff',
     body: '#fff',
     text: '#000',
     border: '#000',
@@ -22,9 +25,10 @@ export const lightTheme = {
     button: '#fb96c0',
     buttonHover: '#F965A3',
     toggleHover: '#373737',
+    buttonShadow: '#000',
 };
 
-export const darkTheme = {
+export const darkTheme: Theme = {
     accent: '#000',
     body: '#000',
     text: '#fff',
@@ -35,4 +39,5 @@ export const darkTheme = {
     button: '#a8287f',
     buttonHover: '#CF349D',
     toggleHover: '#e6e6e6',
+    buttonShadow: '#fff',
 };

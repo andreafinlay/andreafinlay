@@ -1,9 +1,9 @@
 import React, { forwardRef, Ref } from 'react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
-
-import { Styled } from './slide.styled';
 import { ExternalLink, Github } from '../../assets/icons';
+import { Button } from '..';
+import { Styled } from './slide.styled';
 
 interface SlideProps {
     title: string;
@@ -24,16 +24,16 @@ export const Slide = forwardRef(
         return (
             <Styled.Slide id={id} ref={ref}>
                 <Styled.Header>
-                    <h1>{title}</h1>
+                    <h1 style={{ marginTop: '8px' }}>{title}</h1>
                     {demo && (
-                        <Styled.Link as="a" href={demo}>
+                        <Button as="a" href={demo} title="View demo">
                             <ExternalLink size={24} />
-                        </Styled.Link>
+                        </Button>
                     )}
                     {github && (
-                        <Styled.Link as="a" href={github}>
+                        <Button as="a" href={github} title="Visit Github">
                             <Github size={24} />
-                        </Styled.Link>
+                        </Button>
                     )}
                 </Styled.Header>
                 <MDXRenderer>{body}</MDXRenderer>
