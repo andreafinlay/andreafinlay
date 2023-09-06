@@ -25,20 +25,10 @@ const ContentWrapper = styled('div')`
 `;
 
 const Title = styled('h1')`
-    font-size: 2.8rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 0;
-
-    ${breakpoint('lg')`
-        align-items: center;
-    `};
-
-    ${breakpoint('sm')`
-        font-size: 1.4rem;
-        align-items: center;
-    `};
 `;
 
 const Logo = styled('div')`
@@ -54,21 +44,51 @@ const Logo = styled('div')`
 `;
 
 const Link = styled('button')`
+    font-size: 3.8vw;
     color: ${({ theme }) => theme.text};
     background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border: none;
-    cursor: pointer;
-    padding: 0;
     user-select: none;
 
     &:hover {
         background-color: transparent;
         filter: none;
-        transform: translate(0px, -2px);
+        transform: none;
+        color: ${({ theme }) => theme.link};
     }
+
+    ${breakpoint('lg')`
+        font-size: 5vw;
+    `};
+
+    ${breakpoint('md')`
+        display: none;
+    `};
+`;
+
+const MobileLink = styled('button')`
+    font-size: 7vw;
+
+    display: none;
+    color: ${({ theme }) => theme.text};
+    background-color: transparent;
+    border: none;
+    user-select: none;
+
+    &:hover {
+        background-color: transparent;
+        filter: none;
+        transform: none;
+        color: ${({ theme }) => theme.link};
+    }
+
+    ${breakpoint('md')`
+        display: block;
+    `};
+
+    ${breakpoint('sm')`
+        font-size: 10vw;
+    `};
 `;
 
 const LinkGroup = styled('div')`
@@ -106,6 +126,12 @@ const Burger = styled('button')`
     align-items: center;
     height: 50px;
     width: 50px;
+
+    &:hover {
+        background-color: ${({ theme }) => theme.buttonHover};
+        filter: none;
+        transform: none;
+    }
 `;
 
 const BurgerLineWrapper = styled('div')<{ isOpen: boolean }>`
@@ -155,6 +181,7 @@ export const Styled = {
     ContentWrapper,
     Title,
     Link,
+    MobileLink,
     LinkGroup,
     Burger,
     BurgerLineWrapper,

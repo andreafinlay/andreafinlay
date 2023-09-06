@@ -16,6 +16,7 @@ module.exports = {
         title: 'andrea finlay | web developer',
         description: 'personal portfolio site for andrea finlay',
         author: 'andrea finlay',
+        authorAbbr: 'a. finlay',
         siteUrl: siteUrl,
     },
     plugins: [

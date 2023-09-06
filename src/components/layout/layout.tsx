@@ -22,7 +22,7 @@ const MDXComponents = {
 };
 
 export const Layout: FC<LayoutProps> = ({ children }) => {
-    const { author } = useSiteMetadata();
+    const { author, authorAbbr } = useSiteMetadata();
     const { theme, hasMounted } = useThemeContext();
 
     return hasMounted ? (
@@ -30,7 +30,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
             <GlobalStyles />
             <MDXProvider components={MDXComponents}>
                 <MenuContextProvider>
-                    <Header siteAuthor={author} />
+                    <Header siteAuthor={author} siteAuthorAbbr={authorAbbr} />
                     <Menu />
                 </MenuContextProvider>
                 <Styled.LayoutBody>

@@ -7,9 +7,10 @@ import { Button, ToggleButton, Logo } from '..';
 import { Styled } from './header.styled';
 interface HeaderProps {
     siteAuthor: string;
+    siteAuthorAbbr: string;
 }
 
-export const Header: FC<HeaderProps> = ({ siteAuthor }) => {
+export const Header: FC<HeaderProps> = ({ siteAuthor, siteAuthorAbbr }) => {
     const { slideRefs, showArrow, hideArrow, setNextSlide } =
         useSlidesContext();
     const { isMenuOpen, toggleMenu, closeMenu } = useMenuContext();
@@ -53,6 +54,9 @@ export const Header: FC<HeaderProps> = ({ siteAuthor }) => {
                     <Styled.Link onClick={handleAboutScroll} title="Home">
                         {siteAuthor}
                     </Styled.Link>
+                    <Styled.MobileLink onClick={handleAboutScroll} title="Home">
+                        {siteAuthorAbbr}
+                    </Styled.MobileLink>
                 </Styled.Title>
                 <Styled.MobileGroup>
                     <ToggleButton />
