@@ -29,15 +29,6 @@ const Title = styled('h1')`
     align-items: center;
     justify-content: space-between;
     margin: 0;
-
-    ${breakpoint('lg')`
-        align-items: center;
-    `};
-
-    ${breakpoint('sm')`
-        font-size: 1.4rem;
-        align-items: center;
-    `};
 `;
 
 const Logo = styled('div')`
@@ -52,36 +43,52 @@ const Logo = styled('div')`
     `};
 `;
 
-const Button = styled('button')`
+const Link = styled('button')`
+    font-size: 3.8vw;
     color: ${({ theme }) => theme.text};
     background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border: none;
-    cursor: pointer;
-    padding: 0;
     user-select: none;
 
     &:hover {
         background-color: transparent;
+        filter: none;
+        transform: none;
+        color: ${({ theme }) => theme.link};
     }
+
+    ${breakpoint('lg')`
+        font-size: 5vw;
+    `};
+
+    ${breakpoint('md')`
+        display: none;
+    `};
 `;
 
-const Link = styled('button')`
+const MobileLink = styled('button')`
+    font-size: 7vw;
+
+    display: none;
     color: ${({ theme }) => theme.text};
-    background-color: ${({ theme }) => theme.button};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    padding: 4px;
-    border: 3px solid;
-    border-color: ${({ theme }) => theme.border};
+    background-color: transparent;
+    border: none;
+    user-select: none;
 
     &:hover {
-        background-color: ${({ theme }) => theme.buttonHover};
+        background-color: transparent;
+        filter: none;
+        transform: none;
+        color: ${({ theme }) => theme.link};
     }
+
+    ${breakpoint('md')`
+        display: block;
+    `};
+
+    ${breakpoint('sm')`
+        font-size: 10vw;
+    `};
 `;
 
 const LinkGroup = styled('div')`
@@ -119,6 +126,12 @@ const Burger = styled('button')`
     align-items: center;
     height: 50px;
     width: 50px;
+
+    &:hover {
+        background-color: ${({ theme }) => theme.buttonHover};
+        filter: none;
+        transform: none;
+    }
 `;
 
 const BurgerLineWrapper = styled('div')<{ isOpen: boolean }>`
@@ -167,8 +180,8 @@ export const Styled = {
     Header,
     ContentWrapper,
     Title,
-    Button,
     Link,
+    MobileLink,
     LinkGroup,
     Burger,
     BurgerLineWrapper,

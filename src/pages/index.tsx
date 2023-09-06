@@ -1,7 +1,6 @@
 import React from 'react';
-import { SlidesContextProvider } from '../contexts';
+import { ThemeContextProvider, SlidesContextProvider } from '../contexts';
 import { Content, Layout, SEO } from '../components';
-import { ThemeContextProvider } from '../contexts/themeContext';
 
 const IndexPage = () => (
     <ThemeContextProvider>

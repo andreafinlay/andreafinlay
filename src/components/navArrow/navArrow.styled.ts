@@ -11,7 +11,12 @@ const Arrow = styled('button')<{
     align-items: center;
     left: 4rem;
     top: 1rem;
-    cursor: pointer;
+    border: 5px solid;
+
+    &:hover {
+        transform: none;
+        filter: none;
+    }
 
     animation: ${({ shouldShowArrow, shouldAnimate }) =>
         shouldShowArrow

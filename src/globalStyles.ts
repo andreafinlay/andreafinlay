@@ -189,9 +189,12 @@ button {
   cursor: pointer;
   background-color: ${({ theme }) => theme.button};
   color: ${({ theme }) => theme.text};
+  transition: 100ms ease-in-out;
 }
 button:hover {
   background-color: ${({ theme }) => theme.buttonHover};
+  filter: ${({ theme }) => `drop-shadow(4px 4px 0 ${theme.buttonShadow})`};
+        transform: translate(-4px, -4px);
 }
 input,
 textarea {

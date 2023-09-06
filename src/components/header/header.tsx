@@ -3,15 +3,14 @@ import React, { FC } from 'react';
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import { useMenuContext, useSlidesContext } from '../../contexts';
 import { Github, Linkedin, Send } from '../../assets/icons';
+import { Button, ToggleButton, Logo } from '..';
 import { Styled } from './header.styled';
-import { Logo } from '../logo';
-import { ToggleButton } from '../toggleButton';
-
 interface HeaderProps {
     siteAuthor: string;
+    siteAuthorAbbr: string;
 }
 
-export const Header: FC<HeaderProps> = ({ siteAuthor }) => {
+export const Header: FC<HeaderProps> = ({ siteAuthor, siteAuthorAbbr }) => {
     const { slideRefs, showArrow, hideArrow, setNextSlide } =
         useSlidesContext();
     const { isMenuOpen, toggleMenu, closeMenu } = useMenuContext();
@@ -52,9 +51,12 @@ export const Header: FC<HeaderProps> = ({ siteAuthor }) => {
                     <Styled.Logo>
                         <Logo />
                     </Styled.Logo>
-                    <Styled.Button onClick={handleAboutScroll}>
+                    <Styled.Link onClick={handleAboutScroll} title="Home">
                         {siteAuthor}
-                    </Styled.Button>
+                    </Styled.Link>
+                    <Styled.MobileLink onClick={handleAboutScroll} title="Home">
+                        {siteAuthorAbbr}
+                    </Styled.MobileLink>
                 </Styled.Title>
                 <Styled.MobileGroup>
                     <ToggleButton />
@@ -76,23 +78,25 @@ export const Header: FC<HeaderProps> = ({ siteAuthor }) => {
                     </Styled.Burger>
                 </Styled.MobileGroup>
                 <Styled.LinkGroup>
-                    <Styled.Link
+                    <Button
                         as="a"
                         href="https://github.com/andreafinlay"
                         target="_blank"
+                        title="Github"
                     >
                         <Github size={36} />
-                    </Styled.Link>
-                    <Styled.Link
+                    </Button>
+                    <Button
                         as="a"
                         href="https://linkedin.com/in/andrea-finlay/"
                         target="_blank"
+                        title="LinkedIn"
                     >
                         <Linkedin size={36} />
-                    </Styled.Link>
-                    <Styled.Link onClick={handleContactScroll}>
+                    </Button>
+                    <Button onClick={handleContactScroll} title="Contact">
                         <Send size={36} />
-                    </Styled.Link>
+                    </Button>
                     <ToggleButton />
                 </Styled.LinkGroup>
             </Styled.ContentWrapper>
